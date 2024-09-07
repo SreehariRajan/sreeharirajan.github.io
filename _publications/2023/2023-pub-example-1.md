@@ -19,5 +19,5 @@ authors:
 - Akash Jayan
 - Ramanathan Muthuganapathy
 links:
-  Paper: [https://www.cell.com](https://www.sciencedirect.com/science/article/pii/S0097849323001243)
+  Paper: https://www.sciencedirect.com/science/article/pii/S0097849323001243
 ---
