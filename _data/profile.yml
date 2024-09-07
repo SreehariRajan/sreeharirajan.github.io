@@ -39,12 +39,19 @@ education:
   date: 2020 - 2024
 
 
-# experience:
-# - name: Peking University
-#   logo: /assets/images/badges/PKU_red.png
-#   position: Research Intern
-#   date: Sep. 2019 - Jul. 2021
-
+experience:
+- name: Toshiba Software (India) Pvt. Ltd.
+  logo: https://media.licdn.com/dms/image/v2/C560BAQEAc1FsUuVXEQ/company-logo_200_200/company-logo_200_200/0/1633605277605/toshiba_software_india_pvt_ltd_logo?e=2147483647&v=beta&t=To3ktPIAFzOJ-4GUR75ZY6R7aCrz3nJlu-n3da4_C3U
+  position: Software Developer Intern
+  date: Feb 2024 - Jul 2024
+- name: Machine Learning Lab, IIIT-H
+  logo: https://media.licdn.com/dms/image/v2/C510BAQEWL67ojwmI8w/company-logo_200_200/company-logo_200_200/0/1630575134634/mll_iiith_logo?e=2147483647&v=beta&t=ZVcHDB0FI4GDTjSTTpLVMJ5ccMZLdMGrG3spdiWRfFY
+  position: Research Intern
+  date: Jul 2023 - Mar 2024
+- name: Advanced Geometric Computing Lab, IIT Madras
+  logo: https://media.licdn.com/dms/image/v2/C4E0BAQHBzDTOfxcNjQ/company-logo_200_200/company-logo_200_200/0/1630634402927?e=2147483647&v=beta&t=nnC4Psg0Ngo9uHG3q1cCP6PmK-Fkb0PWl2s979OGaGA
+  position: Research Intern
+  date: Dec 2022 - Jul 2023
 
 awards:
 # - name: Award Name 2
