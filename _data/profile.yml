@@ -4,7 +4,7 @@ navbar_name: "Sreehari Rajan"
 
 positions:
 # - logo: /assets/images/badges/PKU_red.png  # Logo is optional
-  name: MS by Research @ IIITH 
+  - name: MS by Research @ IIITH 
 # - name: Position 2 without logo
 
 
