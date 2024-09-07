@@ -28,11 +28,11 @@ short_bio: >-
   # </p>
 
 portrait_url: https://media.licdn.com/dms/image/v2/D5603AQHKDu_yMXHpbQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1702038251188?e=1730937600&v=beta&t=CbYUk7viLjKVLAXYMmwlXkXFJjvQ7pEQf_YZPE3Yr3E
-portrait_caption: >-
-  Photo by Manja Vitolic on Unsplash (this caption is optional, comment it out to disable).
+# portrait_caption: >-
+  # Photo by Manja Vitolic on Unsplash (this caption is optional, comment it out to disable).
 
 education:
-- name: International Institute of Information Technology - Hyderabad
+- name: International Institute of Information Technology Hyderabad
   logo: https://www.iiit.ac.in/wp-content/uploads/2022/06/IIIT_Hyderabad_Logo-e1655116937986.jpg
   position: MS in Computer Science by Research
   date: 2024 - 2026
