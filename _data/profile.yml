@@ -3,9 +3,9 @@ secondary_name: ""
 navbar_name: "Sreehari Rajan"
 
 positions:
-- logo: /assets/images/badges/PKU_red.png  # Logo is optional
-  name: Position 1 with logo
-- name: Position 2 without logo
+# - logo: /assets/images/badges/PKU_red.png  # Logo is optional
+#   name: Position 1 with logo
+# - name: Position 2 without logo
 
 
 email: "sreehari.rajan@research.iiit.ac.in"
@@ -27,7 +27,7 @@ short_bio: >-
     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
   </p>
 
-portrait_url: /assets/images/photos/portrait.jpg
+portrait_url: https://media.licdn.com/dms/image/v2/D5603AQHKDu_yMXHpbQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1702038251188?e=1730937600&v=beta&t=CbYUk7viLjKVLAXYMmwlXkXFJjvQ7pEQf_YZPE3Yr3E
 portrait_caption: >-
   Photo by Manja Vitolic on Unsplash (this caption is optional, comment it out to disable).
 
