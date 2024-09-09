@@ -62,9 +62,9 @@ img.lazy {
      .email-text, .g_scholar, .git_hub, .twitter_, .linkedin_ {
         font-size:13px !important;
     }
-    .social{
+/*     .social{
         flex-direction:column !important;
-    }
+    } */
 }
 
 
