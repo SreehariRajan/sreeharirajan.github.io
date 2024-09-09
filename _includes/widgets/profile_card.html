@@ -41,19 +41,19 @@
                 </div>
                 <hr />
                 <div class="row">
-                    <div class="col">
+                    <div class="col social">
                         <a class="pr-3 no-break" href="mailto:{{ site.data.profile.email | encode_email }}">
                             <i class="fas fa-at"></i> <span class="email-text">{{ site.data.profile.email | replace: "@", "(at)" }}</span>
                         </a>
 
                         {% if site.data.profile.gscholar %}
-                        <a class="pr-3 no-break" target="_blank" href="https://scholar.google.com/citations?user={{ site.data.profile.gscholar }}&hl=en">
+                        <a class="pr-3 no-break g_scholar" target="_blank" href="https://scholar.google.com/citations?user={{ site.data.profile.gscholar }}&hl=en">
                             <i class="fab fa-google-scholar"></i> Google Scholar
                         </a>
                         {% endif %}
                         
                         {% if site.data.profile.github %}
-                        <a class="pr-3 no-break" target="_blank" href="https://github.com/{{ site.data.profile.github }}">
+                        <a class="pr-3 no-break git_hub" target="_blank" href="https://github.com/{{ site.data.profile.github }}">
                             <i class="fab fa-github"></i> GitHub
                         </a>
                         {% endif %}
@@ -65,13 +65,13 @@
                         {% endif %}
 
                         {% if site.data.profile.twitter %}
-                        <a class="pr-3 no-break" target="_blank" href="https://twitter.com/{{ site.data.profile.twitter }}">
+                        <a class="pr-3 no-break twitter_" target="_blank" href="https://twitter.com/{{ site.data.profile.twitter }}">
                             <i class="fab fa-twitter"></i> Twitter
                         </a>
                         {% endif %}
 
                         {% if site.data.profile.linkedin %}
-                        <a class="pr-3 no-break" target="_blank" href="https://www.linkedin.com/in/{{ site.data.profile.linkedin }}">
+                        <a class="pr-3 no-break linkedin_" target="_blank" href="https://www.linkedin.com/in/{{ site.data.profile.linkedin }}">
                             <i class="fab fa-linkedin"></i> LinkedIn
                         </a>
                         {% endif %}
