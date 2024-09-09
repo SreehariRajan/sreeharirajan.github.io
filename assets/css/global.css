@@ -64,6 +64,7 @@ img.lazy {
     }
     .social{
         flex-direction:column !important;
+    }
 }
 
 
