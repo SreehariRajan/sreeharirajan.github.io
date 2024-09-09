@@ -59,9 +59,11 @@ img.lazy {
     font-family: Courier, monospace;
 }
 @media only screen and (max-width: 768px) {
-     .email-text {
+     .email-text, .g_scholar, .git_hub, .twitter_, .linkedin_ {
         font-size:13px !important;
     }
+    .social{
+        flex-direction:column !important;
 }
 
 
