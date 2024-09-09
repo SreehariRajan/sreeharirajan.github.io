@@ -59,9 +59,5 @@ img.lazy {
     font-family: Courier, monospace;
 }
 
-@media only screen and (max-width: 768px) {
-     .email-text {
-        font-size:7px !important;
-    }
-}
+
 
