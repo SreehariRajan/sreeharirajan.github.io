@@ -6,10 +6,10 @@ pub:            "3DOR’23"
 pub_date:       "2023"
 cover:          /assets/images/covers/sketchcadgan.jpg
 authors:
-- Sreehari Rajan
 - Prasad Pralhad Kendre
 - Kamalesh Kumar Kosalaraman
 - Sanjay Santhosh Kumar Jayasree
+- Sreehari Rajan
 - Akash Jayan
 - Ramanathan Muthuganapathy
 links:
