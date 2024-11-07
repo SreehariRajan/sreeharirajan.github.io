@@ -8,8 +8,8 @@ cover:          /assets/images/covers/sketchcadgan.jpg
 authors:
 - Prasad Pralhad Kendre
 - Kamalesh Kumar Kosalaraman
-- Sanjay Santhosh Kumar Jayasree
 - Sreehari Rajan
+- Sanjay Santhosh Kumar Jayasree
 - Akash Jayan
 - Ramanathan Muthuganapathy
 links:
