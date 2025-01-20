@@ -1,17 +1,16 @@
 ---
-title:          "SketchCADGAN: A generative approach for completing partially drawn query sketches of engineering shapes to enhance retrieval system performance"
-date:           2023-10-01
+title:          "Adversarial Learning based Knowledge Distillation on 3D Point Clouds"
+date:           2025-02-28
 selected:       true
-pub:            "3DOR’23"
-pub_date:       "2023"
-cover:          /assets/images/covers/sketchcadgan.jpg
+pub:            "WACV’25"
+pub_date:       "2025"
+cover:          /assets/images/covers/pointkad.png
 authors:
-- Prasad Pralhad Kendre
-- Kamalesh Kumar Kosalaraman
-- Sreehari Rajan
-- Sanjay Santhosh Kumar Jayasree
-- Akash Jayan
-- Ramanathan Muthuganapathy
+- Sreehari Rajan*
+- Akash Jayan*
+- Sanjay Santhosh Kumar Jayasree*
+- Charu Sharma
+- Dimple A Shajahan
 links:
-  Paper: https://www.sciencedirect.com/science/article/pii/S0097849323001243
+  Project: https://sreeharirajan.github.io/PointKAD_project_page/
 ---
