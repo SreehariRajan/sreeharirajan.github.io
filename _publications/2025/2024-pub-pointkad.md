@@ -4,7 +4,7 @@ date:           2025-02-28
 selected:       true
 pub:            "WACV’25"
 pub_date:       "2025"
-cover:          /assets/images/covers/pointkad.png
+cover:          /assets/images/covers/pointkad.jpg
 authors:
 - Sreehari Rajan*
 - Akash Jayan*
