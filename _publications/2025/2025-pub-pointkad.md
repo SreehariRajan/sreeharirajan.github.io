@@ -12,5 +12,5 @@ authors:
 - Charu Sharma
 - Dimple A Shajahan
 links:
-  Project: https://sreeharirajan.github.io/PointKAD_project_page/
+  Project: https://sreeharirajan.github.io/projects/PointKAD/
 ---
