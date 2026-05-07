@@ -2,7 +2,7 @@
 title:          "InteracTalker: Prompt-Based Human-Object Interaction with Co-Speech Gesture Generation"
 date:           2026-01-01
 selected:       true
-pub:            "WACV’26"
+pub:            "WACV’26 (Oral)"
 pub_date:       "2026"
 cover:          /assets/images/covers/interactalker.jpeg
 authors:
