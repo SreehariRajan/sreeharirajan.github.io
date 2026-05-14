@@ -6,9 +6,9 @@ pub:            "WACV’25"
 pub_date:       "2025"
 cover:          /assets/images/covers/pointkad.jpg
 authors:
-- Sreehari Rajan*
-- Akash Jayan*
 - Sanjay Santhosh Kumar Jayasree*
+- Akash Jayan*
+- Sreehari Rajan*
 - Charu Sharma
 - Dimple A Shajahan
 links:
