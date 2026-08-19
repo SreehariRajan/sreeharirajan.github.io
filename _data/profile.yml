@@ -40,6 +40,10 @@ education:
 
 
 experience:
+- name: Cloudphysician
+  logo: https://cdn.prod.website-files.com/68777cdbe500f135a1d11a0b/687a7e99468cc47ddcc7ea49_favicon.png
+  position: Computer Vision Engineer
+  date: Aug 2026 - Present
 - name: Trugen AI
   logo: https://trugen.ai/favicon.svg
   position: Research Intern
