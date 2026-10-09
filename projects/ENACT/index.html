@@ -30,21 +30,6 @@
       font-size: 0.95rem;
     }
 
-    .results-table {
-      margin: 0 auto;
-    }
-
-    .results-table td,
-    .results-table th {
-      text-align: center !important;
-      vertical-align: middle;
-    }
-
-    .results-table td:first-child,
-    .results-table th:first-child {
-      text-align: left !important;
-    }
-
     .button.is-static-soon {
       cursor: default;
       opacity: 0.6;
@@ -88,6 +73,17 @@
                       <i class="fas fa-file-pdf"></i>
                     </span>
                     <span>Paper (coming soon)</span>
+                  </a>
+                </span>
+                <!-- Video link. -->
+                <span class="link-block">
+                  <a target="_blank"
+                    href="https://drive.google.com/file/d/1X6O2yuRiv8oDPgaEFimZzH4KpT7qYGYa/view?usp=sharing"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-video"></i>
+                    </span>
+                    <span>Video</span>
                   </a>
                 </span>
                 <!-- Code link: add href when the repository is public. -->
@@ -160,6 +156,18 @@
         </div>
       </div>
       <!--/ Abstract. -->
+
+      <!-- Video. -->
+      <div class="columns is-centered has-text-centered" id="video">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Video</h2>
+          <div class="publication-video">
+            <iframe src="https://drive.google.com/file/d/1X6O2yuRiv8oDPgaEFimZzH4KpT7qYGYa/preview"
+              allow="autoplay; fullscreen" allowfullscreen frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+      <!--/ Video. -->
     </div>
   </section>
 
@@ -220,60 +228,6 @@
       <h3 class="title is-4">TRUMANS scenes</h3>
       <img src="./static/images/trumans.jpg" class="figure-img" alt="ENACT on synthetic TRUMANS scenes." />
       <p class="figure-caption">Generalization to synthetic TRUMANS scenes without per-scene tuning.</p>
-
-      <br>
-      <h3 class="title is-4">Quantitative comparison</h3>
-      <div class="table-container">
-        <table class="table is-striped is-narrow results-table">
-          <thead>
-            <tr>
-              <th>Method</th>
-              <th>Input</th>
-              <th>Pene<sub>%scene</sub> &darr;</th>
-              <th>Pene<sub>mean</sub> &darr;</th>
-              <th>Pene<sub>max</sub> &darr;</th>
-              <th>FS &darr;</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>TRUMANS</td>
-              <td>3D scene + goal + label</td>
-              <td>0.046</td>
-              <td>0.240</td>
-              <td>1.892</td>
-              <td>0.196</td>
-            </tr>
-            <tr>
-              <td>LINGO</td>
-              <td>3D scene + goal + text</td>
-              <td>0.058</td>
-              <td>0.421</td>
-              <td>2.056</td>
-              <td>0.106</td>
-            </tr>
-            <tr>
-              <td>ZeroHSI</td>
-              <td>3D Gaussian + state + text</td>
-              <td><b>0.019</b></td>
-              <td>0.147</td>
-              <td>1.330</td>
-              <td>0.158</td>
-            </tr>
-            <tr>
-              <td><b>ENACT (ours)</b></td>
-              <td>2D image + text</td>
-              <td>1.880</td>
-              <td><b>0.030</b></td>
-              <td><b>0.085</b></td>
-              <td><b>0.058</b></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="figure-caption">Physical plausibility on the static subset of AnyInteraction (13 sequences). ENACT
-        achieves the lowest penetration depth and foot sliding from a single RGB image, while all baselines consume a
-        full 3D scene.</p>
     </div>
   </section>
 
