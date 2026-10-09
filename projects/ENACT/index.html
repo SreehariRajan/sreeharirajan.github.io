@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="ENACT: training-free synthesis of scene-aware 3D human-scene interaction motion from a single RGB image and a free-form text instruction.">
+  <meta name="keywords" content="ENACT, human-scene interaction, HSI, motion generation, foundation models, single image">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ENACT: Single-Image Human-Scene Interaction Motion from Language via Foundation-Model Orchestration</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+
+  <style>
+    .figure-img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .figure-caption {
+      margin-top: 0.6rem;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .results-table {
+      margin: 0 auto;
+    }
+
+    .results-table td,
+    .results-table th {
+      text-align: center !important;
+      vertical-align: middle;
+    }
+
+    .results-table td:first-child,
+    .results-table th:first-child {
+      text-align: left !important;
+    }
+
+    .button.is-static-soon {
+      cursor: default;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">ENACT: Single-Image Human-Scene Interaction Motion from Language
+              via Foundation-Model Orchestration</h1>
+            <h2 style="color:red;" class="title is-3">NeurIPS 2026</h2>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://sreeharirajan.github.io/">Sreehari Rajan</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a>Kunal Bhosikar</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a>Charu Sharma</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a>Nikos Athanasiou</a><sup>2</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Machine Learning Lab, IIIT Hyderabad,</span>
+              <span class="author-block"><sup>2</sup>Max Planck Institute for Intelligent Systems, Germany</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Paper link: add href when the camera-ready PDF is public. -->
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark is-static-soon">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper (coming soon)</span>
+                  </a>
+                </span>
+                <!-- Code link: add href when the repository is public. -->
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark is-static-soon">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (coming soon)</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser. -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body has-text-centered">
+        <img src="./static/images/teaser.jpg" class="figure-img"
+          alt="ENACT turns a kitchen photo and a four-step instruction into one continuous 3D motion." />
+        <p class="figure-caption has-text-justified">
+          <b>ENACT</b> synthesizes scene-aware human-scene interaction motion from a single image and a free-form
+          sentence. The instruction is parsed into a sparse set of contact keyframes, each keyframe is resolved to a
+          contact-consistent pose on the reconstructed scene, and a constraint-aware diffuser fills the motion between
+          keyframes into one continuous sequence. No stage is trained on HSI data.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Given a single image of a room and a sentence such as &ldquo;a person walks to the black armchair and
+              sits down,&rdquo; producing a 3D motion sequence of a virtual person performing the described action is
+              out of reach for existing methods. Scene-conditioned methods need hours of paired (scene, motion,
+              language) capture. Zero-shot methods need a pre-scanned 3D scene. Image-based methods produce only static
+              poses. We propose a training-free pipeline that synthesizes scene-aware human-scene interaction (HSI)
+              motion from a single RGB image and a free-form text prompt, with no HSI-specific training and no
+              pre-scanned 3D scene. The key observation is that every needed capability already exists as a frozen
+              foundation model: the bottleneck is composition, not capability.
+            </p>
+            <p>
+              Our method, ENACT, uses a vision-language model (VLM) for high-level reasoning. The VLM parses the input
+              image and prompt into one structured keyframe per sentence, listing the action verb, the body part, the
+              target object, a six-bin contact yaw, an image-edit prompt, and a foot-grounding flag. The keyframe then
+              drives six frozen specialists: a monocular 3D model for the scene point cloud, an open-vocabulary
+              segmenter for object localization, a single-view mesh reconstructor for object geometry, an
+              instruction-following image editor for a synthetic interaction image, an image-conditioned human-mesh
+              recoverer for pose initialization, and a 2D-grounded 3D contact predictor for object affordance.
+              Per-keyframe contact poses are optimized under a whole-body diffusion prior, and a constraint-conditioned
+              motion diffuser connects successive keyframes into one continuous motion.
+            </p>
+            <p>
+              ENACT achieves the lowest mean and maximum scene penetration and the lowest foot sliding among all
+              baselines on a standard HSI benchmark, despite consuming the smallest input. ENACT also generalizes to
+              synthetic datasets and to in-the-wild phone images, including chained multi-step interactions.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+  <!-- Method. -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Method</h2>
+          <img src="./static/images/architecture.jpg" class="figure-img"
+            alt="ENACT pipeline: VLM action parsing, monocular 3D extraction, contact-driven optimization, trajectory planning, motion generation." />
+          <div class="content has-text-justified figure-caption">
+            <p>
+              <b>Stage 1 &ndash; VLM action parsing.</b> A frozen VLM turns the image and instruction into one
+              structured keyframe per sentence.
+              <b>Stage 2 &ndash; Monocular 3D extraction.</b> MoGe recovers a metric scene point map, Grounded-SAM
+              segments the target object and floor, and SAM&nbsp;3D completes the object mesh.
+              <b>Stage 3 &ndash; Contact-driven optimization.</b> FLUX-Kontext inserts a person performing the
+              interaction, GVHMR initializes the pose, InteractVLM predicts object affordances that are snapped onto
+              the measured scene, and the pose is fitted to the contacts under the DPoser-X whole-body prior.
+              <b>Stage 4 &ndash; Trajectory planning.</b> A* plans an obstacle-aware walk on the walkable floor.
+              <b>Stage 5 &ndash; Motion generation.</b> Kimodo infills walking, interaction, and transition phases
+              into one continuous motion.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results. -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+
+      <h3 class="title is-4">In-the-wild images</h3>
+      <img src="./static/images/in_the_wild.jpg" class="figure-img"
+        alt="ENACT on in-the-wild photos: kitchen, cafe, and warehouse." />
+      <p class="figure-caption">ENACT generalizes to uncurated photos, producing contact-consistent motions despite
+        noisy monocular reconstruction.</p>
+
+      <br>
+      <h3 class="title is-4">Multi-step interactions</h3>
+      <img src="./static/images/multi_interactions.jpg" class="figure-img"
+        alt="ENACT executing multi-sentence prompts as one continuous motion." />
+      <p class="figure-caption">A multi-sentence prompt is executed as one continuous motion: each sentence becomes a
+        keyframe, the planner connects successive keyframes on the walkable region, and a transition phase bridges
+        interaction segments.</p>
+
+      <br>
+      <h3 class="title is-4">AnyInteraction benchmark</h3>
+      <img src="./static/images/anyinteraction.jpg" class="figure-img"
+        alt="ENACT on AnyInteraction scenes: input, reconstruction, plan, and generated motion." />
+      <p class="figure-caption">Columns: input image, reconstructed scene, keyframe constraints and planned trajectory,
+        and generated motion.</p>
+
+      <br>
+      <h3 class="title is-4">TRUMANS scenes</h3>
+      <img src="./static/images/trumans.jpg" class="figure-img" alt="ENACT on synthetic TRUMANS scenes." />
+      <p class="figure-caption">Generalization to synthetic TRUMANS scenes without per-scene tuning.</p>
+
+      <br>
+      <h3 class="title is-4">Quantitative comparison</h3>
+      <div class="table-container">
+        <table class="table is-striped is-narrow results-table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Input</th>
+              <th>Pene<sub>%scene</sub> &darr;</th>
+              <th>Pene<sub>mean</sub> &darr;</th>
+              <th>Pene<sub>max</sub> &darr;</th>
+              <th>FS &darr;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TRUMANS</td>
+              <td>3D scene + goal + label</td>
+              <td>0.046</td>
+              <td>0.240</td>
+              <td>1.892</td>
+              <td>0.196</td>
+            </tr>
+            <tr>
+              <td>LINGO</td>
+              <td>3D scene + goal + text</td>
+              <td>0.058</td>
+              <td>0.421</td>
+              <td>2.056</td>
+              <td>0.106</td>
+            </tr>
+            <tr>
+              <td>ZeroHSI</td>
+              <td>3D Gaussian + state + text</td>
+              <td><b>0.019</b></td>
+              <td>0.147</td>
+              <td>1.330</td>
+              <td>0.158</td>
+            </tr>
+            <tr>
+              <td><b>ENACT (ours)</b></td>
+              <td>2D image + text</td>
+              <td>1.880</td>
+              <td><b>0.030</b></td>
+              <td><b>0.085</b></td>
+              <td><b>0.058</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="figure-caption">Physical plausibility on the static subset of AnyInteraction (13 sequences). ENACT
+        achieves the lowest penetration depth and foot sliding from a single RGB image, while all baselines consume a
+        full 3D scene.</p>
+    </div>
+  </section>
+
+  <!-- BibTeX: add once the proceedings entry is available. -->
+  <!--
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@inproceedings{enact2026,
+  title     = {ENACT: Single-Image Human-Scene Interaction Motion from Language via Foundation-Model Orchestration},
+  author    = {Rajan, Sreehari and Bhosikar, Kunal and Sharma, Charu and Athanasiou, Nikos},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2026},
+}</code></pre>
+    </div>
+  </section>
+  -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content has-text-centered">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0
+                International License</a>. Template adapted from <a
+                href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
