@@ -1,32 +1,99 @@
----
-layout: default
-title : Publications
-navbar_title: Publications
-body_attr: >-
-  data-spy="scroll" data-target="#navbar-year" data-offset="100"
----
-
-{% assign pubs_by_year = site.publications | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
-
-<div class="row">
-    <div class="col-12 col-lg-10">
-        {% for year in pubs_by_year %}
-        {% assign num_papers = year.items | size %}
-        <h2 class="pt-4" id="year-{{ year.name }}">{{ year.name }}</h2>
-        <div class="my-0 p-0 bg-white shadow-sm rounded-sm">
-            {% for item in year.items %}
-                {% include widgets/publication_item.html item=item %}
-            {% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Publications - Sreehari Rajan</title>
+    <script>
+        (function () {
+            var t = null;
+            try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (!t) t = 'dark';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/global.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html">Sreehari Rajan</a>
+            <nav class="nav">
+                <a class="nav-link" href="index.html">About</a>
+                <a class="nav-link" href="index.html#news">News</a>
+                <a class="nav-link active" href="publications.html">Publications</a>
+                <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <i class="fas fa-moon icon-moon"></i>
+                    <i class="fas fa-sun icon-sun"></i>
+                </button>
+            </nav>
         </div>
-        {% endfor %}
-    </div>
+    </header>
 
-    <div class="col-2 d-none d-lg-block">
-        <div id="navbar-year" class="nav nav-pills flex-column sticky-top" style="top: 80px">
-            {% for year in pubs_by_year %}
-            <a class="nav-link d-block" href="#year-{{ year.name }}">{{ year.name }}</a>
-            {% endfor %}
+    <main class="container">
+        <h1 class="page-title">Publications</h1>
+
+        <section class="section">
+            <h2>2026</h2>
+            <div class="pubs">
+                <article class="pub">
+                    <div class="pub-thumb"><img class="bg" src="projects/ENACT/static/images/teaser.jpg" alt="" aria-hidden="true" loading="lazy"><img class="fg" src="projects/ENACT/static/images/teaser.jpg" alt="ENACT" loading="lazy"></div>
+                    <div class="pub-body">
+                        <h3>ENACT: Single-Image Human-Scene Interaction Motion from Language via Foundation-Model Orchestration</h3>
+                        <p class="pub-authors"><strong>Sreehari Rajan</strong>, Kunal Bhosikar, Charu Sharma, Nikos Athanasiou</p>
+                        <p class="pub-venue"><em>NeurIPS 2026</em></p>
+                    </div>
+                </article>
+                <article class="pub">
+                    <div class="pub-thumb"><img class="bg" src="assets/images/covers/interactalker.jpeg" alt="" aria-hidden="true" loading="lazy"><img class="fg" src="assets/images/covers/interactalker.jpeg" alt="InteracTalker" loading="lazy"></div>
+                    <div class="pub-body">
+                        <h3>InteracTalker: Prompt-Based Human-Object Interaction with Co-Speech Gesture Generation</h3>
+                        <p class="pub-authors"><strong>Sreehari Rajan*</strong>, Kunal Bhosikar*, Charu Sharma <mark>(* equal contribution)</mark></p>
+                        <p class="pub-venue"><em>WACV 2026 (Oral)</em></p>
+                        <p class="pub-links"><a href="projects/InteracTalker/index.html">Project</a></p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>2025</h2>
+            <div class="pubs">
+                <article class="pub">
+                    <div class="pub-thumb"><img class="bg" src="assets/images/covers/pointkad.jpg" alt="" aria-hidden="true" loading="lazy"><img class="fg" src="assets/images/covers/pointkad.jpg" alt="PointKAD" loading="lazy"></div>
+                    <div class="pub-body">
+                        <h3>Adversarial Learning based Knowledge Distillation on 3D Point Clouds</h3>
+                        <p class="pub-authors">Sanjay Santhosh Kumar Jayasree*, Akash Jayan*, <strong>Sreehari Rajan*</strong>, Charu Sharma, Dimple A Shajahan <mark>(* equal contribution)</mark></p>
+                        <p class="pub-venue"><em>WACV 2025</em></p>
+                        <p class="pub-links"><a href="projects/PointKAD/index.html">Project</a></p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>2023</h2>
+            <div class="pubs">
+                <article class="pub">
+                    <div class="pub-thumb"><img class="bg" src="assets/images/covers/sketchcadgan.jpg" alt="" aria-hidden="true" loading="lazy"><img class="fg" src="assets/images/covers/sketchcadgan.jpg" alt="SketchCADGAN" loading="lazy"></div>
+                    <div class="pub-body">
+                        <h3>SketchCADGAN: A generative approach for completing partially drawn query sketches of engineering shapes to enhance retrieval system performance</h3>
+                        <p class="pub-authors">Prasad Pralhad Kendre, Kamalesh Kumar Kosalaraman, Sanjay Santhosh Kumar Jayasree, <strong>Sreehari Rajan</strong>, Akash Jayan, Ramanathan Muthuganapathy</p>
+                        <p class="pub-venue"><em>3DOR 2023</em></p>
+                        <p class="pub-links"><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0097849323001243">Paper</a></p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <span>Last updated Oct 2026</span>
         </div>
-    </div>
-
-</div>
+    </footer>
+    <script src="assets/js/common.js"></script>
+</body>
+</html>

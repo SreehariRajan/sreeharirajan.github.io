@@ -1,14 +1,11 @@
-// aHR0cHM6Ly9naXRodWIuY29tL2x1b3N0MjYvYWNhZGVtaWMtaG9tZXBhZ2U=
-$(function () {
-    $('.lazy').Lazy({
-        scrollDirection: 'vertical',
-        effect: 'fadeIn',
-        effectTime: 300,
-        visibleOnly: true,
-        placeholder: "",
-        onError: function(element) {
-            console.log('[lazyload] Error loading ' + element.data('src'));
-        }
-    })
-    $('[data-toggle="tooltip"]').tooltip()
-})
+(function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme-toggle');
+    if (btn) {
+        btn.addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            try { localStorage.setItem('theme', next); } catch (e) {}
+        });
+    }
+})();

@@ -1,7 +1,25 @@
----
-layout: prompt
-title: 404 - Page Not Found
----
-<h1 class="mt-5">404</h1>
-<p class="lead">The requested page could not be found.</p>
-<p><a href="{{ '/' | relative_url }}">Go home</a></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>404 - Page Not Found</title>
+    <script>
+        (function () {
+            var t = null;
+            try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (!t) t = 'dark';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/global.css">
+</head>
+<body>
+    <main class="container">
+        <h1 class="page-title">404</h1>
+        <p class="role">The requested page could not be found.</p>
+        <p><a href="/">Go home</a></p>
+    </main>
+</body>
+</html>

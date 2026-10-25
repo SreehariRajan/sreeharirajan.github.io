@@ -1,28 +1,182 @@
----
-layout: default
-title : Homepage
-navbar_title: Home
----
-{% include widgets/profile_card.html %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About - Sreehari Rajan</title>
+    <meta name="description" content="Research in 3D computer vision, 3D human-scene interaction and embodied AI.">
+    <script>
+        (function () {
+            var t = null;
+            try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (!t) t = 'dark';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/global.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html">Sreehari Rajan</a>
+            <nav class="nav">
+                <a class="nav-link active" href="index.html">About</a>
+                <a class="nav-link" href="index.html#news">News</a>
+                <a class="nav-link" href="publications.html">Publications</a>
+                <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <i class="fas fa-moon icon-moon"></i>
+                    <i class="fas fa-sun icon-sun"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
 
-{% include widgets/url_debug_message.html %}
+    <main class="container">
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Sreehari Rajan</h1>
+                <p class="role">MS by Research @ IIITH</p>
+                <div class="bio">
+                    <p>I am a researcher working on 3D computer vision, 3D human-scene interaction, and embodied AI. I am pursuing an M.S. by Research at the Machine Learning Lab (MLL), IIIT Hyderabad, advised by Dr. Charu Sharma. I study how to model 3D humans and their motion, and how people interact with objects and scenes, so that embodied agents can perceive and act in the physical world.</p>
+                </div>
+                <ul class="tags">
+                    <li>3D Computer Vision</li>
+                    <li>3D Human-Scene Interaction</li>
+                    <li>Embodied AI</li>
+                    <li>Human Motion Generation</li>
+                </ul>
+                <div class="links">
+                    <a href="mailto:sreeharirajan.ss@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                    <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=WYnIr48AAAAJ&hl=en"><i class="fab fa-google-scholar"></i> Scholar</a>
+                    <a target="_blank" rel="noopener" href="https://github.com/SreehariRajan"><i class="fab fa-github"></i> GitHub</a>
+                    <a target="_blank" rel="noopener" href="https://twitter.com/sreehari_rajan_"><i class="fab fa-x-twitter"></i> Twitter</a>
+                    <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/sreeharirajan-"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                </div>
+            </div>
+            <img class="portrait" src="assets/images/pic.png" alt="Sreehari Rajan">
+        </section>
 
-{% if site.data.display.homepage.show_experience %}
-{% include widgets/experience_card.html %}
-{% endif %}
+        <section class="section" id="news">
+            <h2>News</h2>
+            <ul class="news">
+                <li><time>Sep 2026</time><span>🎉 Our paper <span class="hl">ENACT</span> has been accepted at <span class="hl">NeurIPS 2026</span>!</span></li>
+                <li><time>Aug 2026</time><span>🎉 Thrilled to share that I’ve joined <span class="hl">Cloudphysician</span> as a Computer Vision Engineer.</span></li>
+                <li><time>Dec 2025</time><span>🎉 Thrilled to share that I’ve joined <span class="hl">TruGen AI</span> as a Research Intern, where I’ll be working on human avatars 🤖</span></li>
+                <li><time>Nov 2025</time><span>Our Paper '<span class="hl">InteracTalker: Prompt-Based Human-Object Interaction with Co-Speech Gesture Generation</span>', has been accepted at the <span class="hl">WACV 2026</span> Conference.</span></li>
+                <li><time>May 2025</time><span>Excited to share that I’ve joined <span class="hl">Visual Computing Group @ TCS Research</span> as a Research Intern!</span></li>
+                <li><time>Aug 2024</time><span>Our Paper '<span class="hl">Adversarial Learning based Knowledge Distillation on 3D Point Clouds</span>', has been accepted at the <span class="hl">WACV 2025</span> Conference</span></li>
+            </ul>
+        </section>
 
-{% if site.data.display.homepage.show_news %}
-{% assign count_news = site.news | size %}
-{% if count_news > 0 %}
-{% include widgets/news_card.html %}
-{% endif %}
-{% endif %}
+        <section class="section" id="experience">
+            <h2>Experience</h2>
+            <ul class="timeline">
+                <li>
+                    <img class="logo" src="https://cdn.prod.website-files.com/68777cdbe500f135a1d11a0b/687a7e99468cc47ddcc7ea49_favicon.png" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+                    <div class="tl-body"><div class="tl-title">Computer Vision Engineer</div><div class="tl-sub"><a target="_blank" rel="noopener" href="https://www.cloudphysician.ai/">Cloudphysician</a></div></div>
+                    <div class="tl-date">Aug 2026 - Present</div>
+                </li>
+                <li>
+                    <img class="logo" src="https://trugen.ai/favicon.svg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+                    <div class="tl-body"><div class="tl-title">Research Intern</div><div class="tl-sub"><a target="_blank" rel="noopener" href="https://trugen.ai/">Trugen AI</a></div></div>
+                    <div class="tl-date">Dec 2025 - Apr 2026</div>
+                </li>
+                <li>
+                    <img class="logo" src="https://www.tcs.com/etc.clientlibs/tcs/clientlibs/clientlib-site/resources/images/tcs_favicon_32.png" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+                    <div class="tl-body"><div class="tl-title">Research Intern</div><div class="tl-sub"><a target="_blank" rel="noopener" href="https://viscomputing.github.io/">Visual Computing Group, TCS Research</a></div></div>
+                    <div class="tl-date">May 2025 - Aug 2025</div>
+                </li>
+                <li>
+                    <img class="logo" src="https://media.licdn.com/dms/image/v2/C510BAQEWL67ojwmI8w/company-logo_200_200/company-logo_200_200/0/1630575134634/mll_iiith_logo?e=2147483647&v=beta&t=ZVcHDB0FI4GDTjSTTpLVMJ5ccMZLdMGrG3spdiWRfFY" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+                    <div class="tl-body"><div class="tl-title">Researcher</div><div class="tl-sub"><a target="_blank" rel="noopener" href="https://mll.iiit.ac.in/">Machine Learning Lab, IIIT-H</a></div></div>
+                    <div class="tl-date">Sept 2024 - Aug 2026</div>
+                </li>
+                <li>
+                    <img class="logo" src="https://media.licdn.com/dms/image/v2/C560BAQEAc1FsUuVXEQ/company-logo_200_200/company-logo_200_200/0/1633605277605/toshiba_software_india_pvt_ltd_logo?e=2147483647&v=beta&t=To3ktPIAFzOJ-4GUR75ZY6R7aCrz3nJlu-n3da4_C3U" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+                    <div class="tl-body"><div class="tl-title">Software Developer Intern</div><div class="tl-sub"><a target="_blank" rel="noopener" href="https://www.toshiba-tsip.com/">Toshiba Software (India) Pvt. Ltd.</a></div></div>
+                    <div class="tl-date">Feb 2024 - Jul 2024</div>
+                </li>
+                <li>
+                    <img class="logo" src="https://media.licdn.com/dms/image/v2/C510BAQEWL67ojwmI8w/company-logo_200_200/company-logo_200_200/0/1630575134634/mll_iiith_logo?e=2147483647&v=beta&t=ZVcHDB0FI4GDTjSTTpLVMJ5ccMZLdMGrG3spdiWRfFY" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+                    <div class="tl-body"><div class="tl-title">Research Intern</div><div class="tl-sub"><a target="_blank" rel="noopener" href="https://mll.iiit.ac.in/">Machine Learning Lab, IIIT-H</a></div></div>
+                    <div class="tl-date">Jul 2023 - Mar 2024</div>
+                </li>
+                <li>
+                    <img class="logo" src="https://media.licdn.com/dms/image/v2/C4E0BAQHBzDTOfxcNjQ/company-logo_200_200/company-logo_200_200/0/1630634402927?e=2147483647&v=beta&t=nnC4Psg0Ngo9uHG3q1cCP6PmK-Fkb0PWl2s979OGaGA" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+                    <div class="tl-body"><div class="tl-title">Research Intern</div><div class="tl-sub"><a target="_blank" rel="noopener" href="https://ed.iitm.ac.in/~raman/agcl/agcl.html">Advanced Geometric Computing Lab, IIT Madras</a></div></div>
+                    <div class="tl-date">Dec 2022 - Jul 2023</div>
+                </li>
+            </ul>
+        </section>
 
-{% if site.data.display.homepage.show_selected_publications %}
-{% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
-{% 
-    include widgets/publication_card.html 
-    publications=pubs
-    title='<i class="fas fa-star"></i> Selected Publications'
-%}
-{% endif %}
+        <section class="section">
+            <h2>Education</h2>
+            <ul class="timeline">
+                <li>
+                    <img class="logo" src="https://www.iiit.ac.in/wp-content/uploads/2022/07/cropped-IIIT-Favicon-32x32.png" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+                    <div class="tl-body"><div class="tl-title">International Institute of Information Technology Hyderabad</div><div class="tl-sub">MS in Computer Science by Research</div></div>
+                    <div class="tl-date">2024 - 2026</div>
+                </li>
+                <li>
+                    <img class="logo" src="https://tkmce.ac.in/images/tkm-logo.png" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+                    <div class="tl-body"><div class="tl-title">TKM College of Engineering</div><div class="tl-sub">BTech in Computer Science and Engineering</div></div>
+                    <div class="tl-date">2020 - 2024</div>
+                </li>
+            </ul>
+        </section>
+        <section class="section">
+            <div class="section-head">
+                <h2>Selected Publications</h2>
+                <a href="publications.html">View all <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="pubs">
+                <article class="pub">
+                    <div class="pub-thumb"><img class="bg" src="projects/ENACT/static/images/teaser.jpg" alt="" aria-hidden="true" loading="lazy"><img class="fg" src="projects/ENACT/static/images/teaser.jpg" alt="ENACT" loading="lazy"></div>
+                    <div class="pub-body">
+                        <h3>ENACT: Single-Image Human-Scene Interaction Motion from Language via Foundation-Model Orchestration</h3>
+                        <p class="pub-authors"><strong>Sreehari Rajan</strong>, Kunal Bhosikar, Charu Sharma, Nikos Athanasiou</p>
+                        <p class="pub-venue"><em>NeurIPS 2026</em></p>
+                    </div>
+                </article>
+                <article class="pub">
+                    <div class="pub-thumb"><img class="bg" src="assets/images/covers/interactalker.jpeg" alt="" aria-hidden="true" loading="lazy"><img class="fg" src="assets/images/covers/interactalker.jpeg" alt="InteracTalker" loading="lazy"></div>
+                    <div class="pub-body">
+                        <h3>InteracTalker: Prompt-Based Human-Object Interaction with Co-Speech Gesture Generation</h3>
+                        <p class="pub-authors"><strong>Sreehari Rajan*</strong>, Kunal Bhosikar*, Charu Sharma <mark>(* equal contribution)</mark></p>
+                        <p class="pub-venue"><em>WACV 2026 (Oral)</em></p>
+                        <p class="pub-links"><a href="projects/InteracTalker/index.html">Project</a></p>
+                    </div>
+                </article>
+                <article class="pub">
+                    <div class="pub-thumb"><img class="bg" src="assets/images/covers/pointkad.jpg" alt="" aria-hidden="true" loading="lazy"><img class="fg" src="assets/images/covers/pointkad.jpg" alt="PointKAD" loading="lazy"></div>
+                    <div class="pub-body">
+                        <h3>Adversarial Learning based Knowledge Distillation on 3D Point Clouds</h3>
+                        <p class="pub-authors">Sanjay Santhosh Kumar Jayasree*, Akash Jayan*, <strong>Sreehari Rajan*</strong>, Charu Sharma, Dimple A Shajahan <mark>(* equal contribution)</mark></p>
+                        <p class="pub-venue"><em>WACV 2025</em></p>
+                        <p class="pub-links"><a href="projects/PointKAD/index.html">Project</a></p>
+                    </div>
+                </article>
+                <article class="pub">
+                    <div class="pub-thumb"><img class="bg" src="assets/images/covers/sketchcadgan.jpg" alt="" aria-hidden="true" loading="lazy"><img class="fg" src="assets/images/covers/sketchcadgan.jpg" alt="SketchCADGAN" loading="lazy"></div>
+                    <div class="pub-body">
+                        <h3>SketchCADGAN: A generative approach for completing partially drawn query sketches of engineering shapes to enhance retrieval system performance</h3>
+                        <p class="pub-authors">Prasad Pralhad Kendre, Kamalesh Kumar Kosalaraman, Sanjay Santhosh Kumar Jayasree, <strong>Sreehari Rajan</strong>, Akash Jayan, Ramanathan Muthuganapathy</p>
+                        <p class="pub-venue"><em>3DOR 2023</em></p>
+                        <p class="pub-links"><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0097849323001243">Paper</a></p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <span>Last updated Oct 2026</span>
+        </div>
+    </footer>
+    <script src="assets/js/common.js"></script>
+</body>
+</html>
