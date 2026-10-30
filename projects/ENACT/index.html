@@ -101,7 +101,7 @@
         <p class="figure-caption has-text-justified">
           <b>ENACT</b> synthesizes scene-aware human-scene interaction motion from a single image and a free-form
           sentence. The instruction is parsed into a sparse set of contact keyframes, each keyframe is resolved to a
-          contact-consistent pose on the reconstructed scene, and a constraint-aware diffuser fills the motion between
+          contact-consistent pose on the reconstructed scene, and a constraint-aware diffusion model fills the motion between
           keyframes into one continuous sequence. No stage is trained on HSI data.
         </p>
       </div>
@@ -129,12 +129,13 @@
               Our method, ENACT, uses a vision-language model (VLM) for high-level reasoning. The VLM parses the input
               image and prompt into one structured keyframe per sentence, listing the action verb, the body part, the
               target object, a six-bin contact yaw, an image-edit prompt, and a foot-grounding flag. The keyframe then
-              drives six frozen specialists: a monocular 3D model for the scene point cloud, an open-vocabulary
+              drives seven frozen specialists: a monocular 3D model for the scene point cloud, an open-vocabulary
               segmenter for object localization, a single-view mesh reconstructor for object geometry, an
               instruction-following image editor for a synthetic interaction image, an image-conditioned human-mesh
-              recoverer for pose initialization, and a 2D-grounded 3D contact predictor for object affordance.
-              Per-keyframe contact poses are optimized under a whole-body diffusion prior, and a constraint-conditioned
-              motion diffuser connects successive keyframes into one continuous motion.
+              recoverer for pose initialization, a 2D-grounded 3D contact predictor for object affordance, and a
+              constraint-conditioned motion diffusion model for motion synthesis. Per-keyframe contact poses are
+              optimized under a whole-body diffusion prior, and the motion diffusion model connects successive
+              keyframes into one continuous motion.
             </p>
             <p>
               ENACT achieves the lowest mean and maximum scene penetration and the lowest foot sliding among all
