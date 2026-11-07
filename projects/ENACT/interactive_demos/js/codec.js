@@ -93,16 +93,34 @@ export function dequantizeFrame(q, verts, origin, step, a, b, t, target) {
   return target;
 }
 
-/** Quantised point cloud → { positions: Float32Array, colors: Uint8Array }. */
-export function dequantizePoints(buffer, count, origin, step, colorOffset) {
+/**
+ * Quantised point cloud → { positions: Float32Array, colors: Uint8Array }.
+ *
+ * `codec: "mdq16"` means the positions are Z-ordered and stored as wrapping
+ * uint16 deltas (export_demo.encode_points_mdq16) — a running sum rebuilds
+ * them exactly. Anything else is plain absolute uint16.
+ */
+export function dequantizePoints(buffer, count, origin, step, colorOffset, codec) {
   const q = new Uint16Array(buffer, 0, count * 3);
   const positions = new Float32Array(count * 3);
   const [ox, oy, oz] = origin;
   const [sx, sy, sz] = step;
-  for (let i = 0; i < count; i++) {
-    positions[i * 3]     = ox + q[i * 3]     * sx;
-    positions[i * 3 + 1] = oy + q[i * 3 + 1] * sy;
-    positions[i * 3 + 2] = oz + q[i * 3 + 2] * sz;
+  if (codec === 'mdq16') {
+    let x = 0, y = 0, z = 0;
+    for (let i = 0; i < count; i++) {
+      x = (x + q[i * 3]) & 0xffff;
+      y = (y + q[i * 3 + 1]) & 0xffff;
+      z = (z + q[i * 3 + 2]) & 0xffff;
+      positions[i * 3] = ox + x * sx;
+      positions[i * 3 + 1] = oy + y * sy;
+      positions[i * 3 + 2] = oz + z * sz;
+    }
+  } else {
+    for (let i = 0; i < count; i++) {
+      positions[i * 3]     = ox + q[i * 3]     * sx;
+      positions[i * 3 + 1] = oy + q[i * 3 + 1] * sy;
+      positions[i * 3 + 2] = oz + q[i * 3 + 2] * sz;
+    }
   }
   const colors = new Uint8Array(buffer, colorOffset, count * 3).slice();
   return { positions, colors };
@@ -133,7 +151,7 @@ export async function loadSample(entry, dataRoot = 'data', onProgress = null) {
     if (onProgress) onProgress('loading scene');
     const buf = await fetchBinary(`${dir}/${meta.scene.file}`);
     scene = dequantizePoints(buf, meta.scene.count, meta.scene.origin,
-      meta.scene.step, meta.scene.colorOffset);
+      meta.scene.step, meta.scene.colorOffset, meta.scene.codec);
   }
 
   const affordance = [];
@@ -141,7 +159,8 @@ export async function loadSample(entry, dataRoot = 'data', onProgress = null) {
     const buf = await fetchBinary(`${dir}/${layer.file}`);
     affordance.push({
       label: layer.label,
-      ...dequantizePoints(buf, layer.count, layer.origin, layer.step, layer.colorOffset),
+      ...dequantizePoints(buf, layer.count, layer.origin, layer.step, layer.colorOffset,
+        layer.codec),
     });
   }
 

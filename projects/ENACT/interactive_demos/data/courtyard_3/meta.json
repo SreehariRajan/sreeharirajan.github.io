@@ -105,6 +105,7 @@
   },
   "scene": {
     "file": "scene.bin.gz",
+    "codec": "mdq16",
     "count": 160000,
     "pointSize": 0.01248,
     "imageSize": [
@@ -123,7 +124,12 @@
       0.003,
       0.003
     ],
-    "colorOffset": 960000
+    "colorOffset": 960000,
+    "objectIdOffset": 1440000,
+    "objectNames": [
+      "wooden chair",
+      "wooden sofa"
+    ]
   },
   "affordance": [
     {

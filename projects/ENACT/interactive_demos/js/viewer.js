@@ -620,13 +620,22 @@ function describeError(err) {
 async function main() {
   const root = document.body;
   const viewer = new DemoViewer(root);
+  const embedded = new URLSearchParams(location.search).has('embed');
+  document.documentElement.classList.toggle('is-embed', embedded);
+  let pending = null;
+  window.addEventListener('message', (e) => {
+    if (e.origin !== location.origin || e.data?.type !== 'enact-select') return;
+    const i = viewer.samples?.findIndex((s) => s.slug === e.data.slug) ?? -1;
+    if (i < 0) { pending = e.data.slug; return; }
+    viewer.select(i);
+  });
   try {
     const manifest = await fetchJSON(`${DATA_ROOT}/manifest.json`);
     const samples = manifest.samples || [];
     if (!samples.length) throw new Error('manifest.json lists no samples');
     viewer.setSamples(samples);
     const wanted = new URLSearchParams(location.search).get('sample');
-    const start = Math.max(0, samples.findIndex((s) => s.slug === wanted));
+    const start = Math.max(0, samples.findIndex((s) => s.slug === (pending || wanted)));
     await viewer.select(start);
   } catch (err) {
     viewer.loading = false;

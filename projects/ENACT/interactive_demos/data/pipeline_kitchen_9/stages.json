@@ -1,0 +1,309 @@
+{
+  "slug": "kitchen_9",
+  "title": "Kitchen \u00b7 4 steps",
+  "bundle": "kitchen_9",
+  "prompt": "A person walks forward and reaches his hand to turn off the stove. Turns around and walks forward and opens the fridge using one hand. Turns around and walks forward and reaches his hand to turn off the water tap. Turns around and walks forward and bend down and reaches his hand to turn on the oven.",
+  "image": "input.jpg",
+  "keyframes": [
+    {
+      "keyframeId": 1,
+      "verb": "reach",
+      "bodyPart": "R_Hand",
+      "targetObject": "stove",
+      "targetPart": "control knob",
+      "description": "Person reaches with right hand to turn off the stove",
+      "orientation": 270.0,
+      "footGrounded": null,
+      "fluxPrompt": "Insert exactly one realistic full-body adult person standing and reaching right hand toward stove control knob in kitchen"
+    },
+    {
+      "keyframeId": 2,
+      "verb": "open",
+      "bodyPart": "R_Hand",
+      "targetObject": "fridge",
+      "targetPart": "handle",
+      "description": "Person opens the fridge using right hand",
+      "orientation": 180.0,
+      "footGrounded": null,
+      "fluxPrompt": "Insert exactly one realistic full-body adult person standing and opening fridge with right hand in kitchen"
+    },
+    {
+      "keyframeId": 3,
+      "verb": "reach",
+      "bodyPart": "R_Hand",
+      "targetObject": "water tap",
+      "targetPart": "handle",
+      "description": "Person reaches with right hand to turn off the water tap",
+      "orientation": 90.0,
+      "footGrounded": null,
+      "fluxPrompt": "Insert exactly one realistic full-body adult person standing and reaching right hand toward water tap handle in kitchen"
+    },
+    {
+      "keyframeId": 4,
+      "verb": "reach",
+      "bodyPart": "R_Hand",
+      "targetObject": "oven",
+      "targetPart": "control knob",
+      "description": "Person bends down and reaches with right hand to turn on the oven",
+      "orientation": 270.0,
+      "footGrounded": null,
+      "fluxPrompt": "Insert exactly one realistic full-body adult person bending down and reaching right hand toward oven control knob in kitchen"
+    }
+  ],
+  "objects": [
+    {
+      "object": "stove",
+      "part": "control knob",
+      "prompt": "stove"
+    },
+    {
+      "object": "fridge",
+      "part": "handle",
+      "prompt": "fridge"
+    },
+    {
+      "object": "water tap",
+      "part": "handle",
+      "prompt": "water tap"
+    },
+    {
+      "object": "oven",
+      "part": "control knob",
+      "prompt": "oven"
+    },
+    {
+      "object": "floor",
+      "part": "",
+      "prompt": "floor"
+    }
+  ],
+  "objectMeshes": {
+    "file": "objects.bin.gz",
+    "vertexCount": 71401,
+    "origin": [
+      -1.38914,
+      0.028123,
+      -4.991786
+    ],
+    "step": [
+      0.002,
+      0.002,
+      0.002
+    ],
+    "colorOffset": 428406,
+    "indexOffset": 642612,
+    "indexCount": 72000,
+    "indexDtype": "uint32",
+    "parts": [
+      {
+        "name": "stove",
+        "vertexOffset": 0,
+        "vertexCount": 17832,
+        "indexOffset": 0,
+        "indexCount": 18000
+      },
+      {
+        "name": "fridge",
+        "vertexOffset": 17832,
+        "vertexCount": 17739,
+        "indexOffset": 18000,
+        "indexCount": 18000
+      },
+      {
+        "name": "water tap",
+        "vertexOffset": 35571,
+        "vertexCount": 17962,
+        "indexOffset": 36000,
+        "indexCount": 18000
+      },
+      {
+        "name": "oven",
+        "vertexOffset": 53533,
+        "vertexCount": 17868,
+        "indexOffset": 54000,
+        "indexCount": 18000
+      }
+    ]
+  },
+  "floor": {
+    "file": "floor.bin.gz",
+    "count": 51275,
+    "origin": [
+      -1.455927,
+      -0.000743,
+      -6.858078
+    ],
+    "step": [
+      0.003,
+      0.003,
+      0.003
+    ]
+  },
+  "planned": {
+    "file": "planned.bin.gz",
+    "count": 412,
+    "dtype": "float32",
+    "colorOffset": 4944
+  },
+  "initPose": null,
+  "stages": [
+    {
+      "id": "parse",
+      "number": 1,
+      "title": "Parse the instruction",
+      "subtitle": "Vision-language model",
+      "body": "A frozen VLM reads the photo and the prompt and writes one keyframe per clause \u2014 4 here: action verb, body part, target object and part, contact yaw, foot-grounding flag.",
+      "layers": {
+        "photo": true
+      },
+      "images": []
+    },
+    {
+      "id": "reconstruct",
+      "number": 2,
+      "title": "Lift the photo to 3D",
+      "subtitle": "MoGe \u00b7 Grounded-SAM \u00b7 SAM 3D",
+      "body": "MoGe lifts the photo into a metric point map (160,000 points), Grounded-SAM segments the floor and each target (stove, fridge, water tap, oven), and SAM 3D completes each target into a closed mesh. Masks are painted back onto the cloud; the floor plane sets the ground and the walkable region.",
+      "layers": {
+        "scene": true,
+        "objectMask": true,
+        "objects": true,
+        "floor": true
+      },
+      "images": [
+        {
+          "src": "img/s2_depth.webp",
+          "caption": "MoGe metric depth"
+        },
+        {
+          "src": "img/s2_gsam_stove.webp",
+          "caption": "Grounded-SAM: stove"
+        },
+        {
+          "src": "img/s2_gsam_fridge.webp",
+          "caption": "Grounded-SAM: fridge"
+        },
+        {
+          "src": "img/s2_gsam_water_tap.webp",
+          "caption": "Grounded-SAM: water tap"
+        },
+        {
+          "src": "img/s2_gsam_oven.webp",
+          "caption": "Grounded-SAM: oven"
+        },
+        {
+          "src": "img/s2_gsam_floor.webp",
+          "caption": "Grounded-SAM: floor"
+        },
+        {
+          "src": "img/s2_sam3d_stove.webp",
+          "caption": "SAM 3D mesh: stove"
+        },
+        {
+          "src": "img/s2_sam3d_fridge.webp",
+          "caption": "SAM 3D mesh: fridge"
+        },
+        {
+          "src": "img/s2_sam3d_water_tap.webp",
+          "caption": "SAM 3D mesh: water tap"
+        },
+        {
+          "src": "img/s2_sam3d_oven.webp",
+          "caption": "SAM 3D mesh: oven"
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "number": 3,
+      "title": "Resolve every contact",
+      "subtitle": "FLUX-Kontext \u00b7 GVHMR \u00b7 InteractVLM \u00b7 DPoser-X",
+      "body": "FLUX-Kontext edits a person into the photo and GVHMR recovers the pose. The contact body part comes from the keyframe; InteractVLM supplies only the object affordance. DPoser-X fits the pose onto it (yellow).",
+      "layers": {
+        "scene": true,
+        "affordance": true,
+        "keyframe": true
+      },
+      "images": [
+        {
+          "src": "img/s3_kf01_flux_in.webp",
+          "caption": "KF1 crop fed to FLUX-Kontext"
+        },
+        {
+          "src": "img/s3_kf01_flux_out.webp",
+          "caption": "KF1 person inserted (reach stove)"
+        },
+        {
+          "src": "img/s3_kf01_oafford.webp",
+          "caption": "KF1 InteractVLM object affordance"
+        },
+        {
+          "src": "img/s3_kf02_flux_in.webp",
+          "caption": "KF2 crop fed to FLUX-Kontext"
+        },
+        {
+          "src": "img/s3_kf02_flux_out.webp",
+          "caption": "KF2 person inserted (open fridge)"
+        },
+        {
+          "src": "img/s3_kf02_oafford.webp",
+          "caption": "KF2 InteractVLM object affordance"
+        },
+        {
+          "src": "img/s3_kf03_flux_in.webp",
+          "caption": "KF3 crop fed to FLUX-Kontext"
+        },
+        {
+          "src": "img/s3_kf03_flux_out.webp",
+          "caption": "KF3 person inserted (reach water tap)"
+        },
+        {
+          "src": "img/s3_kf03_oafford.webp",
+          "caption": "KF3 InteractVLM object affordance"
+        },
+        {
+          "src": "img/s3_kf04_flux_in.webp",
+          "caption": "KF4 crop fed to FLUX-Kontext"
+        },
+        {
+          "src": "img/s3_kf04_flux_out.webp",
+          "caption": "KF4 person inserted (reach oven)"
+        },
+        {
+          "src": "img/s3_kf04_oafford.webp",
+          "caption": "KF4 InteractVLM object affordance"
+        }
+      ]
+    },
+    {
+      "id": "plan",
+      "number": 4,
+      "title": "Plan the route",
+      "subtitle": "A* on the walkable floor",
+      "body": "A* routes over the walkable floor between consecutive keyframes \u2014 a sparse set of root waypoints, not yet a motion.",
+      "layers": {
+        "scene": true,
+        "floor": true,
+        "planned": true,
+        "keyframe": true
+      },
+      "images": []
+    },
+    {
+      "id": "motion",
+      "number": 5,
+      "title": "Generate the motion",
+      "subtitle": "Kimodo diffusion",
+      "body": "Kimodo infills the walk, interaction and transition phases into one continuous motion that hits every fitted pose. No stage was trained on human-scene interaction data.",
+      "layers": {
+        "scene": true,
+        "objects": true,
+        "planned": true,
+        "keyframe": true,
+        "human": true,
+        "timeline": true
+      },
+      "images": []
+    }
+  ]
+}

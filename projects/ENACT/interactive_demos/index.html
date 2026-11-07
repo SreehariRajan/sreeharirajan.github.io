@@ -10,7 +10,7 @@
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1117'/%3E%3Ccircle cx='16' cy='9' r='4' fill='%236ea8fe'/%3E%3Cpath d='M9 30c0-6 3-11 7-11s7 5 7 11' fill='%236ea8fe'/%3E%3C/svg%3E">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <script>if(/[?&]embed/.test(location.search))document.documentElement.classList.add('is-embed')</script>
   <style>
     :root {
       --bg: #0b0f16;
@@ -36,8 +36,9 @@
       color-scheme: dark;
     }
     header { flex: 0 0 auto; padding: 12px 16px 10px; background: var(--panel); border-bottom: 1px solid var(--line); }
-    #tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
-    #tabs::-webkit-scrollbar { display: none; }
+    #tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+    .is-embed #tabs { display: none; }
+    .is-embed header { padding-top: 10px; }
     .tab {
       flex: 0 0 auto; font: inherit; font-size: 13px; font-weight: 500;
       padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px;

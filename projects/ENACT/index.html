@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
 
@@ -161,8 +160,9 @@
           bodies are the fitted contact poses.
         </p>
       </div>
+      <div class="demo-tabs" id="demo-tabs" role="tablist" aria-label="Demo scenes"></div>
       <div class="demo-embed">
-        <iframe src="./interactive_demos/index.html" loading="lazy" allowfullscreen
+        <iframe id="demo-frame" src="./interactive_demos/index.html?embed=1" loading="lazy" allowfullscreen
           title="Interactive 3D viewer: generated human-scene interaction motion"></iframe>
       </div>
       <p class="figure-caption has-text-centered">
@@ -213,6 +213,29 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Pipeline walkthrough. -->
+  <section class="section demo-section" id="walkthrough">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <p class="eyebrow">Pipeline</p>
+        <h2 class="title is-3">Under the hood, one stage at a time</h2>
+        <p class="demo-lede">
+          The same kitchen, stage by stage. Step through the five stages to see the parsed keyframes, the
+          reconstructed scene and object meshes, the predicted affordance and fitted contact poses, the planned
+          route, and the generated motion &mdash; each with its 2D evidence and what it adds to the 3D scene.
+        </p>
+      </div>
+      <div class="demo-embed">
+        <iframe src="./interactive_demos/pipeline.html?embed=1" loading="lazy" allowfullscreen
+          title="Stage-by-stage walkthrough of the ENACT pipeline"></iframe>
+      </div>
+      <p class="figure-caption has-text-centered">
+        <a href="./interactive_demos/pipeline.html" target="_blank" rel="noopener">Open full-screen <i
+            class="fas fa-arrow-up-right-from-square"></i></a>
+      </p>
     </div>
   </section>
 
@@ -280,6 +303,32 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Demo tabs live on this page (so they wrap onto extra lines); the viewer iframe just receives the pick.
+    (async function () {
+      const bar = document.getElementById('demo-tabs');
+      const frame = document.getElementById('demo-frame');
+      if (!bar || !frame) return;
+      let samples = [];
+      try {
+        samples = (await (await fetch('./interactive_demos/data/manifest.json')).json()).samples || [];
+      } catch (e) { bar.hidden = true; return; }
+      const buttons = samples.map((s, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'demo-tab' + (i === 0 ? ' is-active' : '');
+        b.setAttribute('role', 'tab');
+        b.textContent = s.title || s.slug;
+        b.addEventListener('click', () => {
+          buttons.forEach((x) => x.classList.toggle('is-active', x === b));
+          frame.contentWindow.postMessage({ type: 'enact-select', slug: s.slug }, location.origin);
+        });
+        bar.appendChild(b);
+        return b;
+      });
+    })();
+  </script>
 
 </body>
 
