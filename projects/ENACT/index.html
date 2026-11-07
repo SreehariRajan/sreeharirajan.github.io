@@ -122,24 +122,19 @@
               poses. We propose a training-free pipeline that synthesizes scene-aware human-scene interaction (HSI)
               motion from a single RGB image and a free-form text prompt, with no HSI-specific training and no
               pre-scanned 3D scene. The key observation is that every needed capability already exists as a frozen
-              foundation model: the bottleneck is composition, not capability.
-            </p>
-            <p>
-              Our method, ENACT, uses a vision-language model (VLM) for high-level reasoning. The VLM parses the input
-              image and prompt into one structured keyframe per sentence, listing the action verb, the body part, the
-              target object, a six-bin contact yaw, an image-edit prompt, and a foot-grounding flag. The keyframe then
-              drives seven frozen specialists: a monocular 3D model for the scene point cloud, an open-vocabulary
-              segmenter for object localization, a single-view mesh reconstructor for object geometry, an
-              instruction-following image editor for a synthetic interaction image, an image-conditioned human-mesh
-              recoverer for pose initialization, a 2D-grounded 3D contact predictor for object affordance, and a
-              constraint-conditioned motion diffusion model for motion synthesis. Per-keyframe contact poses are
-              optimized under a whole-body diffusion prior, and the motion diffusion model connects successive
-              keyframes into one continuous motion.
-            </p>
-            <p>
-              ENACT achieves the lowest mean and maximum scene penetration and the lowest foot sliding among all
-              baselines on a standard HSI benchmark, despite consuming the smallest input. ENACT also generalizes to
-              synthetic datasets and to in-the-wild phone images, including chained multi-step interactions.
+              foundation model: the bottleneck is composition, not capability. Our method, ENACT, uses a
+              vision-language model (VLM) for high-level reasoning. The VLM parses the input image and prompt into one
+              structured keyframe per sentence, listing the action verb, the body part, the target object, a six-bin
+              contact yaw, an image-edit prompt, and a foot-grounding flag. The keyframe then drives seven frozen
+              specialists: a monocular 3D model for the scene point cloud, an open-vocabulary segmenter for object
+              localization, a single-view mesh reconstructor for object geometry, an instruction-following image editor
+              for a synthetic interaction image, an image-conditioned human-mesh recoverer for pose initialization, a
+              2D-grounded 3D contact predictor for object affordance, and a constraint-conditioned motion diffusion
+              model for motion synthesis. Per-keyframe contact poses are optimized under a whole-body diffusion prior,
+              and the motion diffusion model connects successive keyframes into one continuous motion. ENACT achieves
+              the lowest mean and maximum scene penetration and the lowest foot sliding among all baselines on a
+              standard HSI benchmark, despite consuming the smallest input. ENACT also generalizes to a synthetic
+              dataset and to in-the-wild phone images, including chained multi-step interactions.
             </p>
           </div>
         </div>
