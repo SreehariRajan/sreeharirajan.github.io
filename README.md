@@ -1,4 +1,4 @@
-# academic-homepage
+# academic-homepage.
 
 ![Preview](assets/images/etc/preview.png)
 
