@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ENACT: Single-Image Human-Scene Interaction Motion from Language via Foundation-Model Orchestration</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
@@ -46,7 +46,7 @@
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">ENACT: Single-Image Human-Scene Interaction Motion from Language
               via Foundation-Model Orchestration</h1>
-            <h2 style="color:red;" class="title is-3">NeurIPS 2026</h2>
+            <p class="venue-badge">NeurIPS 2026</p>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
                 <a href="https://sreeharirajan.github.io/">Sreehari Rajan</a><sup>1</sup>,</span>
@@ -146,6 +146,34 @@
         </div>
       </div>
       <!--/ Abstract. -->
+    </div>
+  </section>
+
+  <!-- Interactive demos. -->
+  <section class="section demo-section" id="interactive">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <p class="eyebrow">Interactive demos</p>
+        <h2 class="title is-3">Explore the results in 3D</h2>
+        <p class="demo-lede">
+          Each demo plays the generated motion inside the scene reconstructed from a single photo. Drag to orbit,
+          scroll to zoom, and scrub the timeline. Blue is the walk, yellow the interaction, and the translucent yellow
+          bodies are the fitted contact poses.
+        </p>
+      </div>
+      <div class="demo-embed">
+        <iframe src="./interactive_demos/index.html" loading="lazy" allowfullscreen
+          title="Interactive 3D viewer: generated human-scene interaction motion"></iframe>
+      </div>
+      <p class="figure-caption has-text-centered">
+        <a href="./interactive_demos/index.html" target="_blank" rel="noopener">Open full-screen <i
+            class="fas fa-arrow-up-right-from-square"></i></a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <div class="container is-max-desktop">
 
       <!-- Video. -->
       <div class="columns is-centered has-text-centered" id="video">

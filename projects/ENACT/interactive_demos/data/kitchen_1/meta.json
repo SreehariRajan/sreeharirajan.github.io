@@ -1,0 +1,164 @@
+{
+  "slug": "kitchen_1",
+  "title": "Kitchen \u00b7 stove",
+  "prompt": "A person walks forward and turn off the stove using right hand.",
+  "promptSegments": [
+    {
+      "text": "A person walks forward and",
+      "keyframeId": 1,
+      "phase": "walk",
+      "start": 0,
+      "end": 196
+    },
+    {
+      "text": "turn off the stove using right hand.",
+      "keyframeId": 1,
+      "phase": "interaction",
+      "start": 196,
+      "end": 226
+    }
+  ],
+  "sourceImage": "kichen_1",
+  "image": "input.jpg",
+  "fps": 30.0,
+  "floorY": -0.00024,
+  "scale": 0.449115,
+  "keyframes": [
+    {
+      "keyframeId": 1,
+      "verb": "reach",
+      "bodyPart": "R_Hand",
+      "targetObject": "stove",
+      "targetPart": "control panel",
+      "description": "Person reaches with right hand to turn off the stove control panel"
+    }
+  ],
+  "human": {
+    "file": "human.bin.gz",
+    "codec": "dq16",
+    "frames": 226,
+    "verts": 5010,
+    "origin": [
+      -0.374038,
+      -0.02339,
+      -3.730822
+    ],
+    "step": [
+      0.001,
+      0.001,
+      0.001
+    ],
+    "faces": {
+      "file": "faces.bin.gz",
+      "count": 9999,
+      "dtype": "uint16"
+    },
+    "quantErrorMm": 0.5
+  },
+  "keyframePoses": {
+    "file": "keyframe_poses.bin.gz",
+    "codec": "dq16",
+    "frames": 1,
+    "verts": 5010,
+    "origin": [
+      -0.283521,
+      -0.018909,
+      -3.730821
+    ],
+    "step": [
+      0.001,
+      0.001,
+      0.001
+    ],
+    "items": [
+      {
+        "keyframeId": 1,
+        "label": "KF1 reach stove"
+      }
+    ]
+  },
+  "scene": {
+    "file": "scene.bin.gz",
+    "count": 160000,
+    "pointSize": 0.00938,
+    "imageSize": [
+      1152,
+      912
+    ],
+    "validPixels": 1041947,
+    "spacingImagePx": 2.5519,
+    "origin": [
+      -3.394343,
+      -0.008093,
+      -5.936884
+    ],
+    "step": [
+      0.003,
+      0.003,
+      0.003
+    ],
+    "colorOffset": 960000
+  },
+  "affordance": [
+    {
+      "file": "afford_kf01.bin.gz",
+      "label": "KF1 reach stove",
+      "keyframeId": 1,
+      "count": 3230,
+      "origin": [
+        -0.484582,
+        0.842617,
+        -4.079387
+      ],
+      "step": [
+        0.003,
+        0.003,
+        0.003
+      ],
+      "colorOffset": 19380
+    }
+  ],
+  "trajectory": {
+    "file": "traj.bin.gz",
+    "count": 226,
+    "dtype": "float32"
+  },
+  "phases": [
+    {
+      "phase": "walk",
+      "start": 0,
+      "end": 196,
+      "keyframeId": 1
+    },
+    {
+      "phase": "interaction",
+      "start": 196,
+      "end": 226,
+      "keyframeId": 1
+    }
+  ],
+  "camera": {
+    "eye": [
+      0.0,
+      1.2456,
+      2.4972
+    ],
+    "target": [
+      0.0501,
+      0.8998,
+      -1.9354
+    ],
+    "forward": [
+      -0.0,
+      0.0053,
+      -1.0
+    ],
+    "up": [
+      0.0025,
+      1.0,
+      0.0053
+    ],
+    "fov": 48.82,
+    "backoff": 2.4972
+  }
+}

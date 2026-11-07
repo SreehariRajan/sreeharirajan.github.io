@@ -1,0 +1,225 @@
+{
+  "slug": "courtyard_1",
+  "title": "Courtyard \u00b7 pillow + door",
+  "prompt": "A person walks forward and bends down to pick the pillow. Straightens up, turns around and walks forward and grabs the handle of the door.",
+  "promptSegments": [
+    {
+      "text": "A person walks forward and",
+      "keyframeId": 1,
+      "phase": "walk",
+      "start": 0,
+      "end": 256
+    },
+    {
+      "text": "bends down to pick the pillow.",
+      "keyframeId": 1,
+      "phase": "interaction",
+      "start": 256,
+      "end": 316
+    },
+    {
+      "text": "Straightens up, turns around and walks forward and",
+      "keyframeId": 2,
+      "phase": "walk",
+      "start": 316,
+      "end": 633
+    },
+    {
+      "text": "grabs the handle of the door.",
+      "keyframeId": 2,
+      "phase": "interaction",
+      "start": 633,
+      "end": 693
+    }
+  ],
+  "sourceImage": "courtyard_1",
+  "image": "input.jpg",
+  "fps": 30.0,
+  "floorY": -0.0013,
+  "scale": 0.312099,
+  "keyframes": [
+    {
+      "keyframeId": 1,
+      "verb": "bends",
+      "bodyPart": "L_Hand",
+      "targetObject": "colorful pillow",
+      "targetPart": "surface",
+      "description": "Person bends down to touch the surface of the colorful pillow"
+    },
+    {
+      "keyframeId": 2,
+      "verb": "grab",
+      "bodyPart": "R_Hand",
+      "targetObject": "wooden door",
+      "targetPart": "handle",
+      "description": "Person grabs the handle of the wooden door"
+    }
+  ],
+  "human": {
+    "file": "human.bin.gz",
+    "codec": "dq16",
+    "frames": 693,
+    "verts": 5010,
+    "origin": [
+      -2.616922,
+      -0.01893,
+      -10.952538
+    ],
+    "step": [
+      0.002,
+      0.002,
+      0.002
+    ],
+    "faces": {
+      "file": "faces.bin.gz",
+      "count": 9999,
+      "dtype": "uint16"
+    },
+    "quantErrorMm": 1.0
+  },
+  "keyframePoses": {
+    "file": "keyframe_poses.bin.gz",
+    "codec": "dq16",
+    "frames": 2,
+    "verts": 5010,
+    "origin": [
+      -2.601843,
+      -0.006477,
+      -10.935337
+    ],
+    "step": [
+      0.002,
+      0.002,
+      0.002
+    ],
+    "items": [
+      {
+        "keyframeId": 1,
+        "label": "KF1 bends colorful pillow"
+      },
+      {
+        "keyframeId": 2,
+        "label": "KF2 grab wooden door"
+      }
+    ]
+  },
+  "scene": {
+    "file": "scene.bin.gz",
+    "count": 160000,
+    "pointSize": 0.02026,
+    "imageSize": [
+      1248,
+      832
+    ],
+    "validPixels": 995996,
+    "spacingImagePx": 2.495,
+    "origin": [
+      -6.796477,
+      -0.014461,
+      -89.893707
+    ],
+    "step": [
+      0.003,
+      0.003,
+      0.003
+    ],
+    "colorOffset": 960000
+  },
+  "affordance": [
+    {
+      "file": "afford_kf01.bin.gz",
+      "label": "KF1 bends colorful pillow",
+      "keyframeId": 1,
+      "count": 1697,
+      "origin": [
+        -2.41779,
+        0.25686,
+        -4.060882
+      ],
+      "step": [
+        0.003,
+        0.003,
+        0.003
+      ],
+      "colorOffset": 10182
+    },
+    {
+      "file": "afford_kf02.bin.gz",
+      "label": "KF2 grab wooden door",
+      "keyframeId": 2,
+      "count": 15806,
+      "origin": [
+        2.926165,
+        0.054578,
+        -10.960528
+      ],
+      "step": [
+        0.003,
+        0.003,
+        0.003
+      ],
+      "colorOffset": 94836
+    }
+  ],
+  "trajectory": {
+    "file": "traj.bin.gz",
+    "count": 693,
+    "dtype": "float32"
+  },
+  "phases": [
+    {
+      "phase": "walk",
+      "start": 0,
+      "end": 256,
+      "keyframeId": 1
+    },
+    {
+      "phase": "interaction",
+      "start": 256,
+      "end": 316,
+      "keyframeId": 1
+    },
+    {
+      "phase": "transition",
+      "start": 316,
+      "end": 361,
+      "keyframeId": 2
+    },
+    {
+      "phase": "walk",
+      "start": 361,
+      "end": 633,
+      "keyframeId": 2
+    },
+    {
+      "phase": "interaction",
+      "start": 633,
+      "end": 693,
+      "keyframeId": 2
+    }
+  ],
+  "camera": {
+    "eye": [
+      0.0,
+      1.1265,
+      2.2103
+    ],
+    "target": [
+      -0.3232,
+      0.8987,
+      -4.0056
+    ],
+    "forward": [
+      -0.0,
+      -0.0017,
+      -1.0
+    ],
+    "up": [
+      -0.002,
+      1.0,
+      -0.0017
+    ],
+    "fov": 53.71,
+    "backoff": 2.2103
+  }
+}

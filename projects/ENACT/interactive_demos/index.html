@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ENACT — Interactive 3D Demos</title>
+  <meta name="description"
+    content="Interactive viewer for ENACT: scrub the generated SMPL-X motion inside the reconstructed 3D scene.">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1117'/%3E%3Ccircle cx='16' cy='9' r='4' fill='%236ea8fe'/%3E%3Cpath d='M9 30c0-6 3-11 7-11s7 5 7 11' fill='%236ea8fe'/%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #0b0f16;
+      --panel: #121823;
+      --panel-2: #1a2230;
+      --ink: #e8ecf3;
+      --ink-soft: #94a0b4;
+      --line: rgba(255, 255, 255, .08);
+      --stage: #0b0f16;
+      --accent: #6ea8fe;
+      --walk: #4c8dff;
+      --interaction: #ffd919;
+      --seg-fill: rgba(150, 120, 255, .35);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: flex; flex-direction: column;
+      background: var(--bg); color: var(--ink);
+      font-family: 'Inter', 'Noto Sans', system-ui, -apple-system, sans-serif;
+      font-size: 14px; overflow: hidden;
+      color-scheme: dark;
+    }
+    header { flex: 0 0 auto; padding: 12px 16px 10px; background: var(--panel); border-bottom: 1px solid var(--line); }
+    #tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
+    #tabs::-webkit-scrollbar { display: none; }
+    .tab {
+      flex: 0 0 auto; font: inherit; font-size: 13px; font-weight: 500;
+      padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px;
+      background: transparent; color: var(--ink-soft); cursor: pointer;
+      transition: background .15s, color .15s, border-color .15s;
+    }
+    .tab:hover { color: var(--ink); border-color: rgba(255,255,255,.2); }
+    .tab.is-active { background: var(--ink); border-color: var(--ink); color: #0b0f16; }
+    .caption { margin-top: 10px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+    #sample-title { margin: 0; font-size: 15px; font-weight: 600; }
+    #prompt { margin: 0; flex: 1 1 320px; min-width: 0; color: var(--ink-soft); font-size: 13.5px; line-height: 1.5; }
+    #prompt::before { content: '\201C'; } #prompt::after { content: '\201D'; }
+    #prompt:empty::before, #prompt:empty::after { content: ''; }
+    #prompt.is-segmented .seg {
+      padding: 1px 3px; margin: 0 -1px; border-radius: 4px; color: #6b7588;
+      background-image: linear-gradient(var(--seg-fill), var(--seg-fill));
+      background-repeat: no-repeat; background-size: 0% 100%; transition: color .3s ease;
+    }
+    #prompt.is-segmented .seg.is-started { color: var(--ink); }
+    @media (prefers-reduced-motion: reduce) { #prompt.is-segmented .seg { transition: none; } }
+
+    main { position: relative; flex: 1 1 auto; min-height: 0; background: var(--stage); }
+    #stage { display: block; width: 100%; height: 100%; cursor: grab; }
+    #stage:active { cursor: grabbing; }
+    #photo {
+      position: absolute; top: 12px; left: 12px; margin: 0; width: clamp(110px, 20%, 190px);
+      border-radius: 10px; overflow: hidden; background: rgba(18, 24, 35, .7);
+      border: 1px solid var(--line); backdrop-filter: blur(8px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.45); pointer-events: none;
+    }
+    #photo img { display: block; width: 100%; height: auto; }
+    #photo figcaption { padding: 4px 8px 5px; color: var(--ink-soft); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; }
+    #hint {
+      position: absolute; right: 12px; bottom: 10px; padding: 4px 10px; border-radius: 999px;
+      background: rgba(18,24,35,.6); color: rgba(226,232,240,.6); font-size: 11px; pointer-events: none;
+    }
+    #status {
+      position: absolute; inset: 0; display: grid; place-content: center; padding: 24px;
+      max-width: 640px; margin: 0 auto; text-align: center; color: #e2e8f0;
+      font-size: 14px; line-height: 1.55; background: rgba(11, 15, 22, .85);
+    }
+    #status[data-kind="error"] { color: #ffb4a8; }
+    .is-hidden { display: none !important; }
+
+    footer {
+      flex: 0 0 auto; display: flex; flex-direction: column; gap: 10px;
+      padding: 12px 16px 14px; background: var(--panel); border-top: 1px solid var(--line);
+    }
+    .row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+    .row .spacer { flex: 1 1 auto; }
+    button#play, button#reset-view {
+      font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+      border-radius: 999px; transition: transform .1s, background .15s, border-color .15s;
+    }
+    button#play { min-width: 96px; padding: 8px 16px; border: 0; background: var(--ink); color: #0b0f16; }
+    button#play:hover { background: #fff; }
+    button#play:active, button#reset-view:active { transform: scale(.96); }
+    button#reset-view { padding: 7px 14px; border: 1px solid var(--line); background: transparent; color: var(--ink); }
+    button#reset-view:hover { background: var(--panel-2); border-color: rgba(255,255,255,.2); }
+    button:focus-visible, .tab:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .track { flex: 1 1 260px; min-width: 200px; }
+    #phases { position: relative; height: 6px; margin-bottom: 6px; border-radius: 999px; background: var(--panel-2); overflow: hidden; }
+    .phase { position: absolute; top: 0; height: 100%; font-size: 0; }
+
+    input[type="range"] {
+      -webkit-appearance: none; appearance: none; display: block; width: 100%; height: 18px;
+      margin: 0; background: transparent; cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 999px; background: var(--panel-2); }
+    input[type="range"]::-moz-range-track { height: 4px; border-radius: 999px; background: var(--panel-2); }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 16px; height: 16px; margin-top: -6px; border-radius: 50%;
+      background: #fff; border: 0; box-shadow: 0 1px 6px rgba(0,0,0,.5); transition: transform .12s;
+    }
+    input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 0; box-shadow: 0 1px 6px rgba(0,0,0,.5); }
+    input[type="range"]:hover::-webkit-slider-thumb { transform: scale(1.15); }
+    #point-size { width: 84px; }
+
+    .knob .knob-label { color: var(--ink-soft); font-size: 12px; }
+    .readout { font-variant-numeric: tabular-nums; font-size: 12.5px; color: var(--ink-soft); min-width: 84px; }
+    #phase-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; min-width: 84px; }
+
+    .toggles { display: flex; flex-wrap: wrap; gap: 6px; }
+    .toggles label {
+      position: relative; display: inline-flex; align-items: center; padding: 5px 12px;
+      border: 1px solid var(--line); border-radius: 999px; font-size: 12.5px; color: var(--ink-soft);
+      cursor: pointer; white-space: nowrap; user-select: none; transition: all .15s;
+    }
+    .toggles label:hover { color: var(--ink); border-color: rgba(255,255,255,.2); }
+    .toggles input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+    .toggles label:has(input:checked) { background: rgba(110,168,254,.16); border-color: rgba(110,168,254,.55); color: #cfe2ff; }
+    .toggles label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .knob { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+
+    select {
+      font: inherit; font-size: 12.5px; padding: 4px 8px; border: 1px solid var(--line);
+      border-radius: 8px; background: var(--panel-2); color: var(--ink);
+    }
+    @media (max-width: 720px) {
+      body { font-size: 13px; }
+      #hint { display: none; }
+      .readout, #phase-label { min-width: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div id="tabs" role="tablist" aria-label="Demo scenes"></div>
+    <div class="caption">
+      <h1 id="sample-title">Interactive demo</h1>
+      <p id="prompt"></p>
+    </div>
+  </header>
+
+  <main>
+    <canvas id="stage"></canvas>
+
+    <figure id="photo" class="is-hidden">
+      <img alt="Input image for this demo">
+      <figcaption>input image</figcaption>
+    </figure>
+
+    <div id="hint">drag to orbit · scroll to zoom · space to play/pause</div>
+    <div id="status" class="is-hidden"></div>
+  </main>
+
+  <footer>
+    <div class="row">
+      <button id="play" type="button" aria-pressed="true">❙❙&nbsp; Pause</button>
+
+      <div class="track">
+        <div id="phases"></div>
+        <input id="timeline" type="range" min="0" max="1" step="1" value="0" aria-label="Motion frame">
+      </div>
+
+      <span class="readout" id="frame-label">– / –</span>
+      <span id="phase-label"></span>
+    </div>
+
+    <div class="row">
+      <div class="toggles">
+        <label><input type="checkbox" data-layer="scene" checked> scene</label>
+        <label><input type="checkbox" data-layer="human" checked> human</label>
+        <label title="Stage-3 contact pose fitted for the keyframe"><input type="checkbox"
+            data-layer="keyframe" checked> keyframe pose</label>
+        <label><input type="checkbox" data-layer="trajectory" checked> path</label>
+        <label><input type="checkbox" data-layer="affordance"> affordance</label>
+        <label><input type="checkbox" data-layer="grid"> grid</label>
+      </div>
+
+      <span class="knob" title="Size of the scene points">
+        <span class="knob-label">points</span>
+        <input id="point-size" type="range" min="0.4" max="2.5" step="0.05" value="1"
+          aria-label="Point size">
+      </span>
+
+      <span class="knob">
+        <span class="knob-label">speed</span>
+        <select id="speed" aria-label="Playback speed">
+          <option value="0.25">0.25×</option>
+          <option value="0.5">0.5×</option>
+          <option value="1" selected>1×</option>
+          <option value="2">2×</option>
+        </select>
+      </span>
+
+      <span class="spacer"></span>
+      <button id="reset-view" type="button">Reset view</button>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/viewer.js"></script>
+</body>
+
+</html>

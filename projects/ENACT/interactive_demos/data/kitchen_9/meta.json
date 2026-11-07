@@ -1,0 +1,347 @@
+{
+  "slug": "kitchen_9",
+  "title": "Kitchen \u00b7 4 steps",
+  "prompt": "A person walks forward and reaches his hand to turn off the stove. Turns around and walks forward and opens the fridge using one hand. Turns around and walks forward and reaches his hand to turn off the water tap. Turns around and walks forward and bend down and reaches his hand to turn on the oven.",
+  "promptSegments": [
+    {
+      "text": "A person walks forward and",
+      "keyframeId": 1,
+      "phase": "walk",
+      "start": 0,
+      "end": 133
+    },
+    {
+      "text": "reaches his hand to turn off the stove.",
+      "keyframeId": 1,
+      "phase": "interaction",
+      "start": 133,
+      "end": 193
+    },
+    {
+      "text": "Turns around and walks forward and",
+      "keyframeId": 2,
+      "phase": "walk",
+      "start": 193,
+      "end": 350
+    },
+    {
+      "text": "opens the fridge using one hand.",
+      "keyframeId": 2,
+      "phase": "interaction",
+      "start": 350,
+      "end": 410
+    },
+    {
+      "text": "Turns around and walks forward and",
+      "keyframeId": 3,
+      "phase": "walk",
+      "start": 410,
+      "end": 514
+    },
+    {
+      "text": "reaches his hand to turn off the water tap.",
+      "keyframeId": 3,
+      "phase": "interaction",
+      "start": 514,
+      "end": 574
+    },
+    {
+      "text": "Turns around and walks forward and bend down and",
+      "keyframeId": 4,
+      "phase": "walk",
+      "start": 574,
+      "end": 682
+    },
+    {
+      "text": "reaches his hand to turn on the oven.",
+      "keyframeId": 4,
+      "phase": "interaction",
+      "start": 682,
+      "end": 742
+    }
+  ],
+  "sourceImage": "kitchen_9",
+  "image": "input.jpg",
+  "fps": 30.0,
+  "floorY": -0.00074,
+  "scale": 0.537622,
+  "keyframes": [
+    {
+      "keyframeId": 1,
+      "verb": "reach",
+      "bodyPart": "R_Hand",
+      "targetObject": "stove",
+      "targetPart": "control knob",
+      "description": "Person reaches with right hand to turn off the stove"
+    },
+    {
+      "keyframeId": 2,
+      "verb": "open",
+      "bodyPart": "R_Hand",
+      "targetObject": "fridge",
+      "targetPart": "handle",
+      "description": "Person opens the fridge using right hand"
+    },
+    {
+      "keyframeId": 3,
+      "verb": "reach",
+      "bodyPart": "R_Hand",
+      "targetObject": "water tap",
+      "targetPart": "handle",
+      "description": "Person reaches with right hand to turn off the water tap"
+    },
+    {
+      "keyframeId": 4,
+      "verb": "reach",
+      "bodyPart": "R_Hand",
+      "targetObject": "oven",
+      "targetPart": "control knob",
+      "description": "Person bends down and reaches with right hand to turn on the oven"
+    }
+  ],
+  "human": {
+    "file": "human.bin.gz",
+    "codec": "dq16",
+    "frames": 742,
+    "verts": 5010,
+    "origin": [
+      -1.2897,
+      -0.037716,
+      -4.521998
+    ],
+    "step": [
+      0.002,
+      0.002,
+      0.002
+    ],
+    "faces": {
+      "file": "faces.bin.gz",
+      "count": 9999,
+      "dtype": "uint16"
+    },
+    "quantErrorMm": 1.0
+  },
+  "keyframePoses": {
+    "file": "keyframe_poses.bin.gz",
+    "codec": "dq16",
+    "frames": 4,
+    "verts": 5010,
+    "origin": [
+      -1.219017,
+      -0.001186,
+      -4.383679
+    ],
+    "step": [
+      0.002,
+      0.002,
+      0.002
+    ],
+    "items": [
+      {
+        "keyframeId": 1,
+        "label": "KF1 reach stove"
+      },
+      {
+        "keyframeId": 2,
+        "label": "KF2 open fridge"
+      },
+      {
+        "keyframeId": 3,
+        "label": "KF3 reach water tap"
+      },
+      {
+        "keyframeId": 4,
+        "label": "KF4 reach oven"
+      }
+    ]
+  },
+  "scene": {
+    "file": "scene.bin.gz",
+    "count": 160000,
+    "pointSize": 0.0095,
+    "imageSize": [
+      1392,
+      752
+    ],
+    "validPixels": 1023009,
+    "spacingImagePx": 2.5286,
+    "origin": [
+      -3.028337,
+      -0.001034,
+      -10.63961
+    ],
+    "step": [
+      0.003,
+      0.003,
+      0.003
+    ],
+    "colorOffset": 960000
+  },
+  "affordance": [
+    {
+      "file": "afford_kf01.bin.gz",
+      "label": "KF1 reach stove",
+      "keyframeId": 1,
+      "count": 5649,
+      "origin": [
+        -1.538835,
+        0.729229,
+        -2.971541
+      ],
+      "step": [
+        0.003,
+        0.003,
+        0.003
+      ],
+      "colorOffset": 33894
+    },
+    {
+      "file": "afford_kf02.bin.gz",
+      "label": "KF2 open fridge",
+      "keyframeId": 2,
+      "count": 58297,
+      "origin": [
+        0.098836,
+        0.034969,
+        -4.388764
+      ],
+      "step": [
+        0.003,
+        0.003,
+        0.003
+      ],
+      "colorOffset": 349782
+    },
+    {
+      "file": "afford_kf03.bin.gz",
+      "label": "KF3 reach water tap",
+      "keyframeId": 3,
+      "count": 2053,
+      "origin": [
+        1.178187,
+        0.71755,
+        -4.10988
+      ],
+      "step": [
+        0.003,
+        0.003,
+        0.003
+      ],
+      "colorOffset": 12318
+    },
+    {
+      "file": "afford_kf04.bin.gz",
+      "label": "KF4 reach oven",
+      "keyframeId": 4,
+      "count": 19828,
+      "origin": [
+        -1.020069,
+        0.203512,
+        -2.860966
+      ],
+      "step": [
+        0.003,
+        0.003,
+        0.003
+      ],
+      "colorOffset": 118968
+    }
+  ],
+  "trajectory": {
+    "file": "traj.bin.gz",
+    "count": 742,
+    "dtype": "float32"
+  },
+  "phases": [
+    {
+      "phase": "walk",
+      "start": 0,
+      "end": 133,
+      "keyframeId": 1
+    },
+    {
+      "phase": "interaction",
+      "start": 133,
+      "end": 193,
+      "keyframeId": 1
+    },
+    {
+      "phase": "transition",
+      "start": 193,
+      "end": 223,
+      "keyframeId": 2
+    },
+    {
+      "phase": "walk",
+      "start": 223,
+      "end": 350,
+      "keyframeId": 2
+    },
+    {
+      "phase": "interaction",
+      "start": 350,
+      "end": 410,
+      "keyframeId": 2
+    },
+    {
+      "phase": "transition",
+      "start": 410,
+      "end": 440,
+      "keyframeId": 3
+    },
+    {
+      "phase": "walk",
+      "start": 440,
+      "end": 514,
+      "keyframeId": 3
+    },
+    {
+      "phase": "interaction",
+      "start": 514,
+      "end": 574,
+      "keyframeId": 3
+    },
+    {
+      "phase": "transition",
+      "start": 574,
+      "end": 604,
+      "keyframeId": 4
+    },
+    {
+      "phase": "walk",
+      "start": 604,
+      "end": 682,
+      "keyframeId": 4
+    },
+    {
+      "phase": "interaction",
+      "start": 682,
+      "end": 742,
+      "keyframeId": 4
+    }
+  ],
+  "camera": {
+    "eye": [
+      0.0,
+      1.3957,
+      2.8565
+    ],
+    "target": [
+      -0.0128,
+      0.8993,
+      -2.5772
+    ],
+    "forward": [
+      -0.0,
+      -0.1031,
+      -0.9947
+    ],
+    "up": [
+      0.0005,
+      0.9947,
+      -0.1031
+    ],
+    "fov": 43.34,
+    "backoff": 2.8718
+  }
+}

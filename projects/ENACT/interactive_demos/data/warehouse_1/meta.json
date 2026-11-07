@@ -1,0 +1,164 @@
+{
+  "slug": "warehouse_1",
+  "title": "Warehouse \u00b7 crate",
+  "prompt": "A person walks forward and bends down to lift the box using both hands.",
+  "promptSegments": [
+    {
+      "text": "A person walks forward and",
+      "keyframeId": 1,
+      "phase": "walk",
+      "start": 0,
+      "end": 174
+    },
+    {
+      "text": "bends down to lift the box using both hands.",
+      "keyframeId": 1,
+      "phase": "interaction",
+      "start": 174,
+      "end": 204
+    }
+  ],
+  "sourceImage": "warehouse_1",
+  "image": "input.jpg",
+  "fps": 30.0,
+  "floorY": 0.00018,
+  "scale": 0.263493,
+  "keyframes": [
+    {
+      "keyframeId": 1,
+      "verb": "grab",
+      "bodyPart": "L_Hand",
+      "targetObject": "wooden crate",
+      "targetPart": "top edge",
+      "description": "Person grabs the top edge of the wooden crate with both hands"
+    }
+  ],
+  "human": {
+    "file": "human.bin.gz",
+    "codec": "dq16",
+    "frames": 204,
+    "verts": 5010,
+    "origin": [
+      -0.805417,
+      -0.012065,
+      -3.477309
+    ],
+    "step": [
+      0.001,
+      0.001,
+      0.001
+    ],
+    "faces": {
+      "file": "faces.bin.gz",
+      "count": 9999,
+      "dtype": "uint16"
+    },
+    "quantErrorMm": 0.5
+  },
+  "keyframePoses": {
+    "file": "keyframe_poses.bin.gz",
+    "codec": "dq16",
+    "frames": 1,
+    "verts": 5010,
+    "origin": [
+      -0.779938,
+      -0.004604,
+      -3.477309
+    ],
+    "step": [
+      0.001,
+      0.001,
+      0.001
+    ],
+    "items": [
+      {
+        "keyframeId": 1,
+        "label": "KF1 grab wooden crate"
+      }
+    ]
+  },
+  "scene": {
+    "file": "scene.bin.gz",
+    "count": 160000,
+    "pointSize": 0.01755,
+    "imageSize": [
+      1216,
+      864
+    ],
+    "validPixels": 1012458,
+    "spacingImagePx": 2.5155,
+    "origin": [
+      -2.867567,
+      -0.019355,
+      -22.261234
+    ],
+    "step": [
+      0.003,
+      0.003,
+      0.003
+    ],
+    "colorOffset": 960000
+  },
+  "affordance": [
+    {
+      "file": "afford_kf01.bin.gz",
+      "label": "KF1 grab wooden crate",
+      "keyframeId": 1,
+      "count": 80952,
+      "origin": [
+        -1.358295,
+        -0.007634,
+        -4.430192
+      ],
+      "step": [
+        0.003,
+        0.003,
+        0.003
+      ],
+      "colorOffset": 485712
+    }
+  ],
+  "trajectory": {
+    "file": "traj.bin.gz",
+    "count": 204,
+    "dtype": "float32"
+  },
+  "phases": [
+    {
+      "phase": "walk",
+      "start": 0,
+      "end": 174,
+      "keyframeId": 1
+    },
+    {
+      "phase": "interaction",
+      "start": 174,
+      "end": 204,
+      "keyframeId": 1
+    }
+  ],
+  "camera": {
+    "eye": [
+      -0.0,
+      1.0543,
+      2.85
+    ],
+    "target": [
+      -0.2772,
+      0.9002,
+      -1.9675
+    ],
+    "forward": [
+      0.0,
+      -0.0271,
+      -0.9996
+    ],
+    "up": [
+      -0.0055,
+      0.9996,
+      -0.0271
+    ],
+    "fov": 43.58,
+    "backoff": 2.851
+  }
+}

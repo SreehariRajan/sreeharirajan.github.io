@@ -1,0 +1,225 @@
+{
+  "slug": "courtyard_3",
+  "title": "Courtyard \u00b7 chair + sofa",
+  "prompt": "A person walks forward and turns around, sits down on the chair. Stands up and walks forward and turns around and sits down on the sofa.",
+  "promptSegments": [
+    {
+      "text": "A person walks forward and turns around,",
+      "keyframeId": 1,
+      "phase": "walk",
+      "start": 0,
+      "end": 222
+    },
+    {
+      "text": "sits down on the chair.",
+      "keyframeId": 1,
+      "phase": "interaction",
+      "start": 222,
+      "end": 282
+    },
+    {
+      "text": "Stands up and walks forward and turns around and",
+      "keyframeId": 2,
+      "phase": "walk",
+      "start": 282,
+      "end": 481
+    },
+    {
+      "text": "sits down on the sofa.",
+      "keyframeId": 2,
+      "phase": "interaction",
+      "start": 481,
+      "end": 541
+    }
+  ],
+  "sourceImage": "courtyard_3",
+  "image": "input.jpg",
+  "fps": 30.0,
+  "floorY": -0.00013,
+  "scale": 0.542984,
+  "keyframes": [
+    {
+      "keyframeId": 1,
+      "verb": "sit",
+      "bodyPart": "gluteus",
+      "targetObject": "wooden chair",
+      "targetPart": "seat",
+      "description": "Person sitting on the seat of the wooden chair"
+    },
+    {
+      "keyframeId": 2,
+      "verb": "sit",
+      "bodyPart": "gluteus",
+      "targetObject": "wooden sofa",
+      "targetPart": "seat",
+      "description": "Person sitting on the seat of the wooden sofa"
+    }
+  ],
+  "human": {
+    "file": "human.bin.gz",
+    "codec": "dq16",
+    "frames": 541,
+    "verts": 5010,
+    "origin": [
+      -1.516677,
+      -0.066309,
+      -3.943131
+    ],
+    "step": [
+      0.002,
+      0.002,
+      0.002
+    ],
+    "faces": {
+      "file": "faces.bin.gz",
+      "count": 9999,
+      "dtype": "uint16"
+    },
+    "quantErrorMm": 1.0
+  },
+  "keyframePoses": {
+    "file": "keyframe_poses.bin.gz",
+    "codec": "dq16",
+    "frames": 2,
+    "verts": 5010,
+    "origin": [
+      -1.438009,
+      -0.065349,
+      -3.94313
+    ],
+    "step": [
+      0.002,
+      0.002,
+      0.002
+    ],
+    "items": [
+      {
+        "keyframeId": 1,
+        "label": "KF1 sit wooden chair"
+      },
+      {
+        "keyframeId": 2,
+        "label": "KF2 sit wooden sofa"
+      }
+    ]
+  },
+  "scene": {
+    "file": "scene.bin.gz",
+    "count": 160000,
+    "pointSize": 0.01248,
+    "imageSize": [
+      1232,
+      848
+    ],
+    "validPixels": 988440,
+    "spacingImagePx": 2.4855,
+    "origin": [
+      -2.453668,
+      -0.026242,
+      -8.369678
+    ],
+    "step": [
+      0.003,
+      0.003,
+      0.003
+    ],
+    "colorOffset": 960000
+  },
+  "affordance": [
+    {
+      "file": "afford_kf01.bin.gz",
+      "label": "KF1 sit wooden chair",
+      "keyframeId": 1,
+      "count": 10662,
+      "origin": [
+        0.386064,
+        -0.006739,
+        -6.717607
+      ],
+      "step": [
+        0.003,
+        0.003,
+        0.003
+      ],
+      "colorOffset": 63972
+    },
+    {
+      "file": "afford_kf02.bin.gz",
+      "label": "KF2 sit wooden sofa",
+      "keyframeId": 2,
+      "count": 40807,
+      "origin": [
+        -2.263597,
+        0.004925,
+        -4.999214
+      ],
+      "step": [
+        0.003,
+        0.003,
+        0.003
+      ],
+      "colorOffset": 244842
+    }
+  ],
+  "trajectory": {
+    "file": "traj.bin.gz",
+    "count": 541,
+    "dtype": "float32"
+  },
+  "phases": [
+    {
+      "phase": "walk",
+      "start": 0,
+      "end": 222,
+      "keyframeId": 1
+    },
+    {
+      "phase": "interaction",
+      "start": 222,
+      "end": 282,
+      "keyframeId": 1
+    },
+    {
+      "phase": "transition",
+      "start": 282,
+      "end": 342,
+      "keyframeId": 2
+    },
+    {
+      "phase": "walk",
+      "start": 342,
+      "end": 481,
+      "keyframeId": 2
+    },
+    {
+      "phase": "interaction",
+      "start": 481,
+      "end": 541,
+      "keyframeId": 2
+    }
+  ],
+  "camera": {
+    "eye": [
+      0.0,
+      1.3707,
+      1.9259
+    ],
+    "target": [
+      0.3857,
+      0.8999,
+      -2.5858
+    ],
+    "forward": [
+      -0.0,
+      -0.0329,
+      -0.9995
+    ],
+    "up": [
+      0.0062,
+      0.9994,
+      -0.0329
+    ],
+    "fov": 61.37,
+    "backoff": 1.927
+  }
+}

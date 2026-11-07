@@ -155,3 +155,93 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+/* ── Modern refresh ───────────────────────────────────────────── */
+:root {
+  --ink: #111827;
+  --ink-soft: #5b6472;
+  --line: #e6e9ef;
+  --accent: #2f6bff;
+  --surface: #f6f8fb;
+}
+
+html { scroll-behavior: smooth; }
+
+body,
+.teaser,
+.publication-title,
+.publication-authors {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.title { color: var(--ink); letter-spacing: -0.02em; font-weight: 700; }
+.publication-title { font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
+.hero-body { padding-top: 4rem; }
+
+.venue-badge {
+  display: inline-block;
+  margin: 0 0 1.2rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  background: #eef3ff;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.publication-authors a { color: var(--accent) !important; }
+.publication-authors { color: var(--ink-soft); }
+
+.publication-links .button.is-dark {
+  background: var(--ink);
+  border: 0;
+  font-weight: 600;
+  transition: transform .15s, box-shadow .15s;
+}
+.publication-links .button.is-dark:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(17, 24, 39, .2); }
+
+.section { padding: 3rem 1.5rem; }
+
+.figure-img {
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(17, 24, 39, .06);
+}
+
+.figure-caption { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; }
+.content p { line-height: 1.75; color: #2a3140; }
+.publication-video { border-radius: 14px !important; box-shadow: 0 10px 30px rgba(17, 24, 39, .1); }
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Interactive demo section */
+.demo-section { background: var(--surface); border-block: 1px solid var(--line); }
+.demo-lede { max-width: 640px; margin: 0 auto 1.8rem; color: var(--ink-soft); line-height: 1.65; }
+
+.demo-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 480px;
+  border: 1px solid #1d2636;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0b0f16;
+  box-shadow: 0 24px 60px rgba(17, 24, 39, .22);
+}
+.demo-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+@media screen and (max-width: 768px) {
+  .demo-embed { aspect-ratio: auto; height: 640px; }
+  .hero-body { padding-top: 2.5rem; }
+}

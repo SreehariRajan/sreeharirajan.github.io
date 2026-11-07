@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "samples": [
+    {
+      "slug": "coffee_shop_1",
+      "title": "Coffee shop \u00b7 door",
+      "prompt": "A person walks forward and grabs the handle of the door with one hand.",
+      "image": "coffee_shop_1/input.jpg",
+      "meta": "coffee_shop_1/meta.json"
+    },
+    {
+      "slug": "trumans_4",
+      "title": "TRUMANS \u00b7 cupboard",
+      "prompt": "A person walks forward and bends down to grab the handle of the cupboard.",
+      "image": "trumans_4/input.jpg",
+      "meta": "trumans_4/meta.json"
+    },
+    {
+      "slug": "kitchen_1",
+      "title": "Kitchen \u00b7 stove",
+      "prompt": "A person walks forward and turn off the stove using right hand.",
+      "image": "kitchen_1/input.jpg",
+      "meta": "kitchen_1/meta.json"
+    },
+    {
+      "slug": "warehouse_1",
+      "title": "Warehouse \u00b7 crate",
+      "prompt": "A person walks forward and bends down to lift the box using both hands.",
+      "image": "warehouse_1/input.jpg",
+      "meta": "warehouse_1/meta.json"
+    },
+    {
+      "slug": "courtyard_1",
+      "title": "Courtyard \u00b7 pillow + door",
+      "prompt": "A person walks forward and bends down to pick the pillow. Straightens up, turns around and walks forward and grabs the handle of the door.",
+      "image": "courtyard_1/input.jpg",
+      "meta": "courtyard_1/meta.json"
+    },
+    {
+      "slug": "courtyard_3",
+      "title": "Courtyard \u00b7 chair + sofa",
+      "prompt": "A person walks forward and turns around, sits down on the chair. Stands up and walks forward and turns around and sits down on the sofa.",
+      "image": "courtyard_3/input.jpg",
+      "meta": "courtyard_3/meta.json"
+    },
+    {
+      "slug": "kitchen_9",
+      "title": "Kitchen \u00b7 4 steps",
+      "prompt": "A person walks forward and reaches his hand to turn off the stove. Turns around and walks forward and opens the fridge using one hand. Turns around and walks forward and reaches his hand to turn off the water tap. Turns around and walks forward and bend down and reaches his hand to turn on the oven.",
+      "image": "kitchen_9/input.jpg",
+      "meta": "kitchen_9/meta.json"
+    }
+  ]
+}

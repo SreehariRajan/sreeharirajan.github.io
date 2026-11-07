@@ -1,0 +1,164 @@
+{
+  "slug": "trumans_4",
+  "title": "TRUMANS \u00b7 cupboard",
+  "prompt": "A person walks forward and bends down to grab the handle of the cupboard.",
+  "promptSegments": [
+    {
+      "text": "A person walks forward and",
+      "keyframeId": 1,
+      "phase": "walk",
+      "start": 0,
+      "end": 230
+    },
+    {
+      "text": "bends down to grab the handle of the cupboard.",
+      "keyframeId": 1,
+      "phase": "interaction",
+      "start": 230,
+      "end": 260
+    }
+  ],
+  "sourceImage": "2d38c33c-6311-4497-b68e-018b544912a2_4",
+  "image": "input.jpg",
+  "fps": 30.0,
+  "floorY": -0.00148,
+  "scale": 0.387468,
+  "keyframes": [
+    {
+      "keyframeId": 1,
+      "verb": "grab",
+      "bodyPart": "R_Hand",
+      "targetObject": "white cupboard",
+      "targetPart": "handle",
+      "description": "Person grabs the handle of the white cupboard"
+    }
+  ],
+  "human": {
+    "file": "human.bin.gz",
+    "codec": "dq16",
+    "frames": 260,
+    "verts": 5010,
+    "origin": [
+      -1.344784,
+      -0.015917,
+      -4.503337
+    ],
+    "step": [
+      0.001,
+      0.001,
+      0.001
+    ],
+    "faces": {
+      "file": "faces.bin.gz",
+      "count": 9999,
+      "dtype": "uint16"
+    },
+    "quantErrorMm": 0.5
+  },
+  "keyframePoses": {
+    "file": "keyframe_poses.bin.gz",
+    "codec": "dq16",
+    "frames": 1,
+    "verts": 5010,
+    "origin": [
+      -1.012571,
+      -0.004849,
+      -4.503337
+    ],
+    "step": [
+      0.001,
+      0.001,
+      0.001
+    ],
+    "items": [
+      {
+        "keyframeId": 1,
+        "label": "KF1 grab white cupboard"
+      }
+    ]
+  },
+  "scene": {
+    "file": "scene.bin.gz",
+    "count": 160000,
+    "pointSize": 0.01251,
+    "imageSize": [
+      1360,
+      768
+    ],
+    "validPixels": 1022207,
+    "spacingImagePx": 2.5276,
+    "origin": [
+      -2.008366,
+      -0.016839,
+      -10.872478
+    ],
+    "step": [
+      0.003,
+      0.003,
+      0.003
+    ],
+    "colorOffset": 960000
+  },
+  "affordance": [
+    {
+      "file": "afford_kf01.bin.gz",
+      "label": "KF1 grab white cupboard",
+      "keyframeId": 1,
+      "count": 43752,
+      "origin": [
+        -1.743612,
+        0.136952,
+        -4.884613
+      ],
+      "step": [
+        0.003,
+        0.003,
+        0.003
+      ],
+      "colorOffset": 262512
+    }
+  ],
+  "trajectory": {
+    "file": "traj.bin.gz",
+    "count": 260,
+    "dtype": "float32"
+  },
+  "phases": [
+    {
+      "phase": "walk",
+      "start": 0,
+      "end": 230,
+      "keyframeId": 1
+    },
+    {
+      "phase": "interaction",
+      "start": 230,
+      "end": 260,
+      "keyframeId": 1
+    }
+  ],
+  "camera": {
+    "eye": [
+      0.0,
+      1.3793,
+      2.856
+    ],
+    "target": [
+      -0.5406,
+      0.8985,
+      -2.5566
+    ],
+    "forward": [
+      -0.0,
+      -0.0818,
+      -0.9966
+    ],
+    "up": [
+      -0.0013,
+      0.9966,
+      -0.0818
+    ],
+    "fov": 43.4,
+    "backoff": 2.8656
+  }
+}
