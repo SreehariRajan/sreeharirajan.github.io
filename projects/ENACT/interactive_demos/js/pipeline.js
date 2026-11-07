@@ -28,7 +28,6 @@ const MASK_COLORS = [0xff6b6b, 0x4cc9f0, 0xffd166, 0x06d6a0, 0xc77dff, 0xff9e4a]
 const LEGEND = {
   scene:      { label: 'scene point cloud (MoGe)', swatch: 'linear-gradient(135deg,#cbb79a,#8fa4bd)' },
   objectMask: { label: 'Grounded-SAM target masks', swatch: 'linear-gradient(90deg,#ff6b6b,#4cc9f0,#ffd166,#06d6a0)' },
-  objects:    { label: 'completed object mesh (SAM 3D)', swatch: '#c89a6a' },
   floor:      { label: 'walkable floor', swatch: '#cfdcf0' },
   affordance: { label: 'contact affordance, low → high', swatch: 'linear-gradient(90deg,#0000ff,#00c800,#ff0000)' },
   initPose:   { label: 'GVHMR pose initialisation', swatch: '#aab4c4' },
