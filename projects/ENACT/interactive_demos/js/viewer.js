@@ -408,7 +408,9 @@ class DemoViewer {
     this.resetView();
     this.holdUntil = 0;
     this.setFrame(0);
-    this.setPlaying(true);
+    // The first scene loads paused (frame 0); later scene switches start playing.
+    this.setPlaying(this.shownOnce === true);
+    this.shownOnce = true;
   }
 
   /** Frame span of each keyframe = its transition + walk + interaction segments. */
