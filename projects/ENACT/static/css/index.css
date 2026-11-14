@@ -207,7 +207,7 @@ body,
 
 .figure-img {
   border-radius: 14px;
-  border: 1px solid var(--line);
+  border: none;
   box-shadow: none;
 }
 
