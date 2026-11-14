@@ -208,7 +208,7 @@ body,
 .figure-img {
   border-radius: 14px;
   border: 1px solid var(--line);
-  box-shadow: 0 10px 30px rgba(17, 24, 39, .06);
+  box-shadow: none;
 }
 
 .figure-caption { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; }
